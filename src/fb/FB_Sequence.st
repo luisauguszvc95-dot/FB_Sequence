@@ -49,6 +49,7 @@ VAR
     xResultMatches : BOOL;
     xRuntimeMatches : BOOL;
     xFeedbackOK : BOOL;
+    xExecutionFeedbackOK : BOOL;
     xActive : BOOL;
     xTerminal : BOOL;
     xReleasePending : BOOL;
@@ -63,6 +64,7 @@ VAR
     udiIntentWaitMs : UDINT;
     udiNextIntentID : UDINT;
     udiLastBatchID : UDINT;
+    udiBatchBefore : UDINT;
     udiBatchAuthorityID : UDINT;
     udiNextPromptID : UDINT;
     udiDelta : UDINT;
@@ -110,10 +112,18 @@ xResultMatches := stIntent.xValid AND stControlResult.xValid
     AND (stControlResult.udiIntentID = stIntent.udiIntentID)
     AND (stControlResult.udiAgeMs <= stCfg.udiMaxFeedbackAgeMs);
 xRuntimeMatches := xRuntimeFresh AND stIntent.xValid
+    AND (stControlRuntime.udiAuthorityID = stIntent.udiAuthorityID)
     AND (stControlRuntime.udiBatchID = stIntent.udiBatchID)
     AND (stControlRuntime.udiIntentID = stIntent.udiIntentID);
 xFeedbackOK := xResultMatches AND xRuntimeMatches
     AND stControlResult.xAccepted AND NOT stControlResult.xRejected;
+// Qualification belongs to the current Execute transaction. An accepted Hold
+// or Acquire is not evidence that this step is executing after (re)start.
+xExecutionFeedbackOK := xFeedbackOK AND (stIntent.eAction = E_SEQ_ACTION.Execute)
+    AND (stIntent.uiStepID = stInternal.uiStepID)
+    AND stControlRuntime.xReady AND NOT stControlRuntime.xFaulted
+    AND stControlRuntime.xResourceGranted AND (stInternal.udiResourceToken > 0)
+    AND (stControlRuntime.udiResourceToken = stInternal.udiResourceToken);
 xTerminal := (stInternal.eState = E_SEQ_STATE.Idle)
     OR (stInternal.eState = E_SEQ_STATE.Complete)
     OR (stInternal.eState = E_SEQ_STATE.Stopped)
@@ -121,6 +131,7 @@ xTerminal := (stInternal.eState = E_SEQ_STATE.Idle)
 xActive := NOT xTerminal AND (stInternal.eState <> E_SEQ_STATE.Faulted);
 eBefore := stInternal.eState;
 uiStepBefore := stInternal.uiStepIndex;
+udiBatchBefore := stInternal.udiBatchID;
 xConfirm := FALSE;
 xRecipeLoadedEvent := FALSE;
 xStepDone := FALSE;
@@ -285,7 +296,7 @@ IF fbGate.xNew THEN
                        AND (stCommand.uiStepID = stInternal.uiStepID)
                        AND (stCommand.udiPromptID = stInternal.udiPromptID)
                        AND (stCommand.udiPromptID > 0)
-                       AND xFeedbackOK AND stControlRuntime.xQualified THEN
+                       AND xExecutionFeedbackOK AND stControlRuntime.xQualified THEN
                         xConfirm := TRUE;
                         stResult.eReason := E_SEQ_REASON.None;
                     ELSE
@@ -300,10 +311,8 @@ END_IF;
 
 // 04 - Lifecycle and process criteria use correlated feedback, never transport ACK.
 xQualified := FALSE;
-IF (stInternal.eState = E_SEQ_STATE.Running) AND xCanExecute AND xFeedbackOK THEN
-    xQualified := stControlRuntime.xQualified AND stControlRuntime.xReady
-        AND NOT stControlRuntime.xFaulted AND stControlRuntime.xResourceGranted
-        AND (stControlRuntime.udiResourceToken = stInternal.udiResourceToken);
+IF (stInternal.eState = E_SEQ_STATE.Running) AND xCanExecute AND xExecutionFeedbackOK THEN
+    xQualified := stControlRuntime.xQualified;
 END_IF;
 xStepChanged := (stInternal.uiStepIndex <> uiStepBefore);
 IF (stInternal.uiStepIndex >= 1) AND (stInternal.uiStepIndex <= stRecipe.uiStepCount)
@@ -396,6 +405,12 @@ IF xCanRequest THEN
 END_IF;
 
 // 05 - Bounded waits. Correlated but incomplete transition feedback does not hide timeout.
+// A transition produced in section 04 starts its own clock. The previous state's
+// age (e.g. a long Running interval) must never time out a new Completing state.
+IF stInternal.eState <> eBefore THEN
+    stInternal.udiStateElapsedMs := 0;
+    udiIntentWaitMs := 0;
+END_IF;
 IF (stInternal.eState = E_SEQ_STATE.Starting) OR (stInternal.eState = E_SEQ_STATE.Holding)
    OR (stInternal.eState = E_SEQ_STATE.Completing) OR (stInternal.eState = E_SEQ_STATE.Stopping)
    OR (stInternal.eState = E_SEQ_STATE.Aborting) THEN
@@ -408,7 +423,7 @@ END_IF;
 IF (stInternal.eState <> E_SEQ_STATE.Idle) AND (stInternal.eState <> E_SEQ_STATE.Complete)
    AND (stInternal.eState <> E_SEQ_STATE.Stopped) AND (stInternal.eState <> E_SEQ_STATE.Aborted)
    AND (stInternal.eState <> E_SEQ_STATE.Faulted) THEN
-    IF xFeedbackOK THEN udiIntentWaitMs := 0;
+    IF xFeedbackOK OR (stInternal.eState <> eBefore) THEN udiIntentWaitMs := 0;
     ELSE udiIntentWaitMs := F_SEQ_AddMs(udiIntentWaitMs, udiDelta); END_IF;
     IF udiIntentWaitMs >= stCfg.udiTransitionTimeoutMs THEN
         stInternal.eState := E_SEQ_STATE.Faulted;
@@ -463,7 +478,8 @@ stDesired.udiBatchID := stInternal.udiBatchID;
 stDesired.uiStepID := stInternal.uiStepID;
 stDesired.uiPhaseID := stInternal.uiPhaseID;
 stDesired.udiResourceToken := stInternal.udiResourceToken;
-IF stInternal.uiStepIndex > 0 THEN
+IF (stInternal.uiStepIndex >= 1) AND (stInternal.uiStepIndex <= stRecipe.uiStepCount)
+   AND (stInternal.uiStepIndex <= 16) THEN
     stDesired.uiProfileID := stRecipe.astSteps[stInternal.uiStepIndex].uiProfileID;
     stDesired.rParameter1 := stRecipe.astSteps[stInternal.uiStepIndex].rParameter1;
     stDesired.rParameter2 := stRecipe.astSteps[stInternal.uiStepIndex].rParameter2;
@@ -517,6 +533,11 @@ stNewEvent.udiSessionID := stCfg.udiSessionID;
 stNewEvent.udiAuthorityID := stAuthority.udiAuthorityID;
 stNewEvent.uiProcessID := stCfg.uiProcessID;
 stNewEvent.udiBatchID := stInternal.udiBatchID;
+// Reset clears the public runtime's batch, but its audit events must still
+// identify the batch whose lifecycle was reset.
+IF (stInternal.udiBatchID = 0) AND (udiBatchBefore > 0) THEN
+    stNewEvent.udiBatchID := udiBatchBefore;
+END_IF;
 stNewEvent.udiRecipeID := stInternal.udiRecipeID;
 stNewEvent.udiRecipeRevision := stInternal.udiRecipeRevision;
 stNewEvent.eState := stInternal.eState;

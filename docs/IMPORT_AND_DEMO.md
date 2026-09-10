@@ -44,10 +44,21 @@ executou a ação nem que o processo terminou.
 
 ## POUs de testes
 
-Execute `PRG_SEQ_SupportTests` e `PRG_SEQ_IntegrationTests` somente na simulação.
+Execute os POUs abaixo somente na simulação, com instâncias novas e não retentivas:
+
+| POU | Verificações esperadas | Escopo |
+| --- | ---: | --- |
+| `PRG_SEQ_SupportTests` | 40 | Timer, gate, receita e fila |
+| `PRG_SEQ_IntegrationTests` | 28 | Concessão, ciclo completo e revogação |
+| `PRG_SEQ_LifecycleTests` | 56 | Hold/Resume, confirmação, Stop/Abort, prazos e Reset |
+| `PRG_SEQ_AuthorityTests` | 8 | Release entre gerações de autoridade |
+
+Use `python3 tools/build_bundle.py --source-dir src --source-dir tests` para
+incluir os testes na ordem textual de incorporação.
 Cada um expõe `uiChecks`, `uiFailures` e `xDone`. O gate de aprovação é `xDone = TRUE`
-e `uiFailures = 0`. Os testes de integração têm timeout de progresso para não ficarem
-esperando indefinidamente um estado que não chegou.
+e `uiFailures = 0`, com o número de verificações esperado. Os roteiros multiscans
+têm quantidade fixa de chamadas; não esperam indefinidamente por um estado ausente.
+Reinicialize a aplicação para repetir. Nenhum destes POUs foi executado neste ambiente.
 
 ## Integração futura
 

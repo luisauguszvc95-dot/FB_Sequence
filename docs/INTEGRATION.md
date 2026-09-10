@@ -115,6 +115,16 @@ O feedback precisa corresponder a `SessionID`, `AuthorityID`, `ProcessID`,
 `BatchID` e `IntentID`. Quando existe posse, deve corresponder também ao token esperado.
 Feedback de intenção antiga não pode encerrar uma intenção nova.
 
+Result e runtime devem corresponder à mesma geração de autoridade da intenção.
+Essa regra também vale para `Abort`/`Release` em `Faulted`; um resultado da
+geração anterior não pode se combinar com runtime da geração nova para confirmar
+a liberação. A nova concessão exige um novo request/result correlacionado.
+
+A contagem qualificada só usa feedback do `Execute` atual. Em `Resume`, o motor
+emite uma intenção Execute nova e espera seu feedback; o intervalo anterior em
+Hold não entra no tempo qualificado. Cada estado transitório inicia seu próprio
+relógio, independentemente do tempo que o lote passou em Running.
+
 No result, `xDone` conclui a **ação de ciclo de execução** solicitada; no runtime,
 `xStepComplete` informa a **conclusão da etapa** de processo. `xAccepted` não
 substitui nenhum desses sinais. `xReleased` confirma que o contexto não conserva
@@ -209,3 +219,6 @@ já foram executados no Machine Expert.
 Registrar separadamente três evidências: revisão estática dos STs, execução de
 testes em simulador e compilação/execução no ambiente de destino. Nenhuma delas
 deve ser apresentada como se comprovasse as outras.
+
+A tabela de transições e a rastreabilidade dos cenários preparados estão em
+[LIFECYCLE.md](LIFECYCLE.md).

@@ -2,7 +2,7 @@
 
 Gerado por `python tools/build_bundle.py --source-dir src --source-dir tests`; não editar manualmente.
 
-30 objetos. A ordem abaixo respeita as dependências identificadas.
+32 objetos. A ordem abaixo respeita as dependências identificadas.
 
 | Ordem | Objeto | Tipo | Dependências | Fonte |
 | --- | --- | --- | --- | --- |
@@ -32,10 +32,12 @@ Gerado por `python tools/build_bundle.py --source-dir src --source-dir tests`; n
 | 24 | `FB_Sequence` | fb | `E_SEQ_ACTION`, `E_SEQ_CMD`, `E_SEQ_EVENT_KIND`, `E_SEQ_REASON`, `E_SEQ_RESULT`, `E_SEQ_STATE`, `E_SEQ_STEP_KIND`, `FB_SEQ_CommandGate`, `FB_SEQ_EventQueue`, `FB_SEQ_QualifiedTimer`, `FB_SEQ_RecipeValidator`, `F_SEQ_AddMs`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_COMMAND_RESULT`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_AUTHORITY`, `ST_SEQ_CONTROL_REQUEST`, `ST_SEQ_CONTROL_RESULT`, `ST_SEQ_CONTROL_RUNTIME`, `ST_SEQ_EVENT`, `ST_SEQ_RECIPE`, `ST_SEQ_RUNTIME` | [FB_Sequence.st](../src/fb/FB_Sequence.st) |
 | 25 | `FB_SEQ_ControlMock` | fb | `E_SEQ_ACTION`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_AUTHORITY`, `ST_SEQ_CONTROL_REQUEST`, `ST_SEQ_CONTROL_RESULT`, `ST_SEQ_CONTROL_RUNTIME` | [FB_SEQ_ControlMock.st](../tests/FB_SEQ_ControlMock.st) |
 | 26 | `GVL_SEQ_IF` | gvl | `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_COMMAND_RESULT`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_AUTHORITY`, `ST_SEQ_CONTROL_REQUEST`, `ST_SEQ_CONTROL_RESULT`, `ST_SEQ_CONTROL_RUNTIME`, `ST_SEQ_EVENT`, `ST_SEQ_RECIPE`, `ST_SEQ_RUNTIME` | [GVL_SEQ_IF.st](../src/gvl/GVL_SEQ_IF.st) |
-| 27 | `PRG_SEQ_Demo` | program | `E_SEQ_STEP_KIND`, `FB_Sequence`, `FB_SEQ_ControlMock`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_CONFIG`, `ST_SEQ_RECIPE` | [PRG_SEQ_Demo.st](../tests/PRG_SEQ_Demo.st) |
-| 28 | `PRG_SEQ_IntegrationTests` | program | `E_SEQ_ACTION`, `E_SEQ_CMD`, `E_SEQ_REASON`, `E_SEQ_RESULT`, `E_SEQ_STATE`, `E_SEQ_STEP_KIND`, `FB_Sequence`, `FB_SEQ_ControlMock`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_RESULT`, `ST_SEQ_CONTROL_RUNTIME`, `ST_SEQ_RECIPE` | [PRG_SEQ_IntegrationTests.st](../tests/PRG_SEQ_IntegrationTests.st) |
-| 29 | `PRG_SEQ_SupportTests` | program | `E_SEQ_CMD`, `E_SEQ_REASON`, `E_SEQ_STEP_KIND`, `FB_SEQ_CommandGate`, `FB_SEQ_EventQueue`, `FB_SEQ_QualifiedTimer`, `FB_SEQ_RecipeValidator`, `F_SEQ_AddMs`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_EVENT`, `ST_SEQ_RECIPE` | [PRG_SEQ_SupportTests.st](../tests/PRG_SEQ_SupportTests.st) |
-| 30 | `PRG_Task_Sequence` | program | `FB_Sequence`, `GVL_SEQ_IF` | [PRG_Task_Sequence.st](../src/prg/PRG_Task_Sequence.st) |
+| 27 | `PRG_SEQ_AuthorityTests` | program | `E_SEQ_ACTION`, `E_SEQ_CMD`, `E_SEQ_RESULT`, `E_SEQ_STATE`, `E_SEQ_STEP_KIND`, `FB_Sequence`, `FB_SEQ_ControlMock`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_AUTHORITY`, `ST_SEQ_CONTROL_RUNTIME`, `ST_SEQ_RECIPE` | [PRG_SEQ_AuthorityTests.st](../tests/PRG_SEQ_AuthorityTests.st) |
+| 28 | `PRG_SEQ_Demo` | program | `E_SEQ_STEP_KIND`, `FB_Sequence`, `FB_SEQ_ControlMock`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_CONFIG`, `ST_SEQ_RECIPE` | [PRG_SEQ_Demo.st](../tests/PRG_SEQ_Demo.st) |
+| 29 | `PRG_SEQ_IntegrationTests` | program | `E_SEQ_ACTION`, `E_SEQ_CMD`, `E_SEQ_REASON`, `E_SEQ_RESULT`, `E_SEQ_STATE`, `E_SEQ_STEP_KIND`, `FB_Sequence`, `FB_SEQ_ControlMock`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_RESULT`, `ST_SEQ_CONTROL_RUNTIME`, `ST_SEQ_RECIPE` | [PRG_SEQ_IntegrationTests.st](../tests/PRG_SEQ_IntegrationTests.st) |
+| 30 | `PRG_SEQ_LifecycleTests` | program | `E_SEQ_ACTION`, `E_SEQ_CMD`, `E_SEQ_EVENT_KIND`, `E_SEQ_REASON`, `E_SEQ_RESULT`, `E_SEQ_STATE`, `E_SEQ_STEP_KIND`, `FB_Sequence`, `FB_SEQ_ControlMock`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_RUNTIME`, `ST_SEQ_RECIPE` | [PRG_SEQ_LifecycleTests.st](../tests/PRG_SEQ_LifecycleTests.st) |
+| 31 | `PRG_SEQ_SupportTests` | program | `E_SEQ_CMD`, `E_SEQ_REASON`, `E_SEQ_STEP_KIND`, `FB_SEQ_CommandGate`, `FB_SEQ_EventQueue`, `FB_SEQ_QualifiedTimer`, `FB_SEQ_RecipeValidator`, `F_SEQ_AddMs`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_EVENT`, `ST_SEQ_RECIPE` | [PRG_SEQ_SupportTests.st](../tests/PRG_SEQ_SupportTests.st) |
+| 32 | `PRG_Task_Sequence` | program | `FB_Sequence`, `GVL_SEQ_IF` | [PRG_Task_Sequence.st](../src/prg/PRG_Task_Sequence.st) |
 
 Verificação estática: declarações e nomes de arquivo, tipos utilizados, membros e valores
 de enums, delimitadores, ausência de endereçamento físico AT/%I/%Q e ciclos de dependência.
