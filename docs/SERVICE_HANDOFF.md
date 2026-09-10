@@ -151,6 +151,11 @@ aplicadas e lote não nulo, crescente na sessão. `Hold`, `Resume`, `Stop`,
 quando a instância não possui lote. `ConfirmStep` também exige etapa e prompt
 correntes, além do feedback qualificado.
 
+Uma confirmação só é admitida enquanto o feedback corresponde à intenção `Execute`
+da etapa atual, com `xReady`, qualificação e token de recurso válidos. Ao retomar
+de `Held`, o Service deve aguardar a execução corrente; o ACK anterior de `Hold`
+não comprova retomada. O PromptID identifica a mesma etapa durante Hold/Resume.
+
 ### Receita candidata: `ST_SEQ_RECIPE` e `ST_SEQ_STEP`
 
 Todos os campos da candidata são escritos pelo publicador de receita do Service.
@@ -264,6 +269,10 @@ Usar esses campos para o histórico, sem associar um evento antigo ao runtime
 atual. `udiSessionID` identifica a origem do evento; `udiCommandSessionID`
 identifica o pedido avaliado e preserva a explicação de uma rejeição por sessão
 incorreta. Os campos de comando são preenchidos nos eventos `CommandResult`.
+
+Ao aceitar `Reset`, o runtime passa a `Idle` e `udiBatchID = 0`. Os eventos dessa
+operação conservam o lote que foi encerrado/resetado. Não substituir esse BatchID
+pelo valor do runtime atual ao persistir o evento.
 
 A fila interna tem 32 posições e expõe a cabeça para consumo. Seu consumidor
 escreve `udiEventAckSessionID` e `udiEventAckID` somente após assumir a
