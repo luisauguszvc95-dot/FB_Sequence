@@ -6,10 +6,13 @@ VAR_GLOBAL
         udiMaxFeedbackAgeMs := 250, udiTransitionTimeoutMs := 5000, udiMaxCycleMs := 100);
     xEnable : BOOL := FALSE;
     udiDeltaMs : UDINT; // Caller supplies measured monotonic elapsed time.
+    stTraceTime : ST_SEQ_TRACE_TIME; // Defaults unknown; clock owner supplies source sample.
 
-    // Service -> Sequence; one serialized writer per process.
+    // External command dispatcher/catalog -> Sequence; one serialized writer.
+    // Observation-only FB_Service v0.2 is NOT this command writer.
     stCommand : ST_SEQ_COMMAND_REQUEST;
     stRecipeCandidate : ST_SEQ_RECIPE;
+    // Consumer ownership receipt translated by integration; never ACK on DTO copy.
     udiEventAckSessionID : UDINT;
     udiEventAckID : UDINT;
 

@@ -1,69 +1,79 @@
-# Registro de validação — base 0.1
+# Registro de validação — contrato Sequence 0.2
 
-Data: 2026-09-10. Esta página separa evidência executada de cenários preparados.
+Data: 2026-09-11. Base: Sequence `0480b33`; dependência opcional:
+Service `b2140a5` (branch `refactor/service-core-v0.2`, schema 2.0).
 
-| Verificação | Resultado | Limite da evidência |
+Esta página distingue resultados executados neste ambiente de testes ST apenas
+preparados. A compilação e os testes que o usuário relatou na versão importada
+anteriormente não são evidência de validação desta atualização 0.2.
+
+| Verificação | Resultado executado | Limite |
 |---|---|---|
-| Checker estático sobre `src/` e fontes ST de `tests/` | 32 objetos, zero achados | Verifica o subconjunto documentado; não é compilador ST |
-| Testes Python do checker | 13 testes aprovados | Exercitam o verificador, não o motor de sequência |
-| Bundle e ordem de dependências | Gerados com 32 objetos | Arquivo textual; não comprova importação nativa |
-| Revisão independente de contratos e lifecycle | Incorporada | Revisão manual, sem execução do runtime |
-| `PRG_SEQ_SupportTests` | 40 grupos de verificações preparados | Ainda não executados no Machine Expert |
-| `PRG_SEQ_IntegrationTests` | 28 verificações multiscans preparadas | Ainda não executadas no Machine Expert |
-| `PRG_SEQ_LifecycleTests` | 56 verificações multiscans preparadas; rastros revisados | Ainda não executadas no Machine Expert |
-| `PRG_SEQ_AuthorityTests` | 8 verificações multiscans preparadas | Ainda não executadas no Machine Expert |
-| Compilação Machine Expert 2.6 | Pendente | IDE/compilador indisponível neste ambiente |
-| Temporização, reinício e comunicação no alvo | Pendente | Dependem do projeto integrador e de mailboxes/relógio reais |
+| Checker estático de `src/` + `tests/` | 36 objetos; zero achados | Não compila nem executa ST |
+| Testes Python do checker | 13 aprovados | Testam o verificador |
+| Testes Python do adaptador opcional | 16 aprovados | Modelo de protocolo + inspeção estática; não executam o FB ST |
+| Identidade dos DUTs Service | 9 blobs correspondem ao commit fixado | Verifica bytes, não compatibilidade binária ou runtime |
+| Checker conjunto: núcleo, testes, adaptador e 9 DUTs Service | 50 objetos; zero achados | Dependências, enums e estrutura; não valida todas as expressões/assinaturas |
+| Bundle textual e ordem de importação | Gerados para os 36 objetos isolados | Adaptador fica fora do bundle básico |
+| Revisão independente | Proveniência de eventos, ACK e expectativas dos testes revisados | Inspeção, não execução |
+| Compilação Machine Expert 2.6 da versão 0.2 | Pendente | IDE/compilador não disponível aqui |
+| Execução dos PRGs ST atualizados | Pendente | Requer projeto separado no simulador |
+| Integração real Sequence + Service | Bloqueada pelos itens do contrato | Falta retenção completa e recibo transacional no Service fixado |
 
-Comandos executados:
+## Testes nativos preparados, ainda não executados nesta versão
+
+| Programa | Alvo esperado | Escopo |
+|---|---|---|
+| `PRG_SEQ_SupportTests` | 40 grupos, zero falhas | Timer, receita, gate, fila e ACK |
+| `PRG_SEQ_IntegrationTests` | 28 verificações, zero falhas | Sequence com Control em memória; não integra Service |
+| `PRG_SEQ_LifecycleTests` | 56 verificações, zero falhas | Hold/Resume, conclusão, Stop/Abort/Release, Reset |
+| `PRG_SEQ_AuthorityTests` | 8 verificações, zero falhas | Correlação de autoridade |
+| `PRG_SEQ_TraceTests` | `xDone=TRUE / uiChecks=16 / uiFailures=0 / uiFirstFailureStep=65535` | Fixtures diretas do builder; quiet scan, tempo, referências e eventos sem conclusão inventada |
+| `PRG_SEQ_TraceEngineTests` | `xDone=TRUE / uiTests=33 / uiFailures=0 / uiFirstFailure=65535` | Núcleo completo em Idle/falha: relógio, origem, ACK, publicação, overflow e identidade imutável |
+| `integration/service_v02/tests/PRG_SEQ_ServiceAdapterTests` | `xDone=TRUE / uiChecks=23 / uiFailures=0 / uiFirstFailure=0` | Recibo completo, confirmação mantida, revogação, novo head e origem sem horário |
+
+Os novos fixtures não acionam equipamento e não medem tempo real. Nenhum valor
+esperado acima deve ser apresentado como resultado observado antes da execução.
+
+## Comandos reproduzíveis
+
+Na raiz do Sequence:
 
 ```bash
 python3 tools/check_sources.py --source-dir src --source-dir tests
 python3 -m unittest discover -s tests -p 'test_*.py' -v
+python3 -m unittest discover -s integration/service_v02/tests -v
 python3 tools/build_bundle.py --source-dir src --source-dir tests
+python3 integration/service_v02/verify_service_dependency.py PATH_TO_FB_SERVICE
 ```
 
-O checker verifica tipos conhecidos, membros de enums, valores numéricos duplicados,
-nomes de objetos, delimitadores estruturais, dependências/ciclos e ausência de
-endereçamento físico. Ele não valida todas as expressões, conversões numéricas,
-assinaturas de chamadas ou regras do compilador de destino.
+Para a verificação estática conjunta, usar um diretório pai contendo o Sequence
+e uma cópia exata dos nove DUTs fixados, sem duplicar tipos dentro do núcleo.
+Executar o checker com `--root` nesse pai e quatro `--source-dir`: Sequence
+`src`, Sequence `tests`, Sequence `integration/service_v02` e o diretório
+dos DUTs do Service. No ambiente desta revisão isso verificou 50 objetos.
 
-## Casos cobertos pelos testes ST preparados
+O checker verifica tipos conhecidos, membros e wire values de enums, nomes,
+delimitadores, dependências/ciclos e ausência de endereçamento físico. Ele não
+valida todas as expressões, conversões ou regras do compilador do destino.
 
-Os testes de suporte usam diretamente os FBs: timer qualificado, saturação, limites
-da receita, duplicatas, fila cheia, ACK repetido e idempotência do gate de comandos.
+## Pontos corrigidos na revisão 0.2
 
-Os testes de integração usam um Control em memória: ausência de autorização,
-concessão incompleta, carga/start, feedback não correlacionado, tempo qualificado,
-Complete/Release distintos, reset, revogação durante lote, reautorização sem retomada,
-supressão de publicação, nova geração de autoridade e encerramento da falha.
+- Tempo e contexto da etapa concluída são capturados antes do reset do timer.
+- Confirmação de prompt identifica a etapa/intenção anterior, não a seguinte.
+- Eventos não atribuem todo fato do scan a um comando que pode ter sido rejeitado.
+- A fila conserva sua cabeça não confirmada; perda por overflow é explícita e
+  mantém `xTraceHistoryComplete=FALSE` pelo restante da instância.
+- O adaptador mantém o ACK da identidade já assumida até o head mudar; uma
+  revogação de publicação não pode perder um pulso e travar permanentemente a fila.
+- Horário desconhecido invalida a projeção genérica; o envelope completo original
+  permanece disponível. O Service não deve substituir a origem desconhecida por
+  horário de ingestão como se fosse o horário do fato.
+- A projeção genérica é declarada parcial. Não há recibo baseado apenas em
+  `aEvents`, contagem de aceitos ou ACK de transporte.
 
-Os testes adicionais cobrem Hold/Resume sem contar feedback da intenção Hold,
-confirmação com Ready falso/prompt incorreto, receita aplicada imutável, término
-após Running longo, Stop/Abort/Release, timeout de Holding, Reset com lote no evento
-e rejeição de feedback de encerramento composto de duas gerações de autoridade.
-
-São cenários executáveis em ST, não resultados medidos de execução. Os 56 scans
-de lifecycle tiveram também revisão manual independente das expectativas.
-
-## Ajustes incorporados na revisão
-
-- Comandos de lifecycle conferem o BatchID corrente para evitar aplicar um pedido de
-  lote antigo ao lote atual.
-- LoadRecipe fica restrito a Idle, preservando a relação entre lote encerrado e receita.
-- A fila admite múltiplas inserções serializadas no mesmo scan; o ACK é avaliado uma vez.
-- Eventos carregam sua própria identidade de receita, concessão e pedido, sem depender
-  de associar posteriormente um evento antigo ao runtime atual.
-- Uma transição natural para Completing reinicia o relógio antes de conferir o prazo;
-  o tempo anterior em Running não provoca timeout falso no encerramento.
-- Result e runtime precisam pertencer à mesma AuthorityID da intenção, inclusive
-  durante Abort/Release de um lote em Faulted.
-- Tempo qualificado e confirmação de operador exigem feedback do Execute corrente,
-  Ready e token de recurso correspondente. Feedback de Hold/Acquire não é execução.
-- Os eventos de Reset conservam o BatchID encerrado, embora o runtime volte a lote zero.
-
-A matriz requisito/código/cenário está em [LIFECYCLE.md](LIFECYCLE.md). O layout dos
-DUTs e os valores numéricos públicos da versão 0.1 foram preservados nesta revisão.
-
-Não há alegação de conformidade ISA/IEC, certificação de segurança funcional ou
-adequação a uma máquina específica. As escolhas de ciclo e contrato são deste projeto.
+Pendências: compilação/importação nativa, execução de todos os PRGs, medição de
+custo/memória, coerência entre tasks, reinício/época, retenção completa, recibo
+transacional e recuperação de perda. Ver [SERVICE_HANDOFF.md](SERVICE_HANDOFF.md),
+[MIGRATION_0_2.md](MIGRATION_0_2.md) e [STANDARDS_ALIGNMENT.md](STANDARDS_ALIGNMENT.md).
+Nenhuma certificação ou conformidade normativa é declarada.

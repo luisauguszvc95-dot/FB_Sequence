@@ -13,7 +13,9 @@ VAR
     xFinishActions : BOOL := FALSE;
     udiAuthorityID : UDINT := 1;
     stConfig : ST_SEQ_CONFIG := (uiProcessID := 1, udiSessionID := 1,
-        udiMaxFeedbackAgeMs := 250, udiTransitionTimeoutMs := 5000, udiMaxCycleMs := 100);
+        udiMaxFeedbackAgeMs := 250, udiTransitionTimeoutMs := 5000, udiMaxCycleMs := 100,
+        uiMachineID := 1, uiProducerSourceID := 1);
+    stTraceTime : ST_SEQ_TRACE_TIME; // Offline virtual clock; never UTC or measured target time.
     stCommand : ST_SEQ_COMMAND_REQUEST;
     stRecipe : ST_SEQ_RECIPE;
     udiAckSessionID : UDINT;
@@ -47,12 +49,16 @@ IF NOT xInitialized THEN
 END_IF;
 
 // One task, one call per scan, previous request consumed by mock on next scan.
+stTraceTime.udiTickMs := F_SEQ_AddMs(stTraceTime.udiTickMs, 20);
+stTraceTime.xValid := stTraceTime.udiTickMs < UDINT#4294967295;
+stTraceTime.xSynthetic := TRUE;
 fbControlMock(xEnable := xControlMockEnabled, stRequest := fbSequence.stControlRequest,
     stConfig := stConfig, xAllowRequests := xAllowRequests, xAllowExecution := xAllowExecution,
     xAllowPublication := xAllowPublication, xQualified := xQualified,
     xStepComplete := xStepComplete, xFaulted := xFaulted, xRejectRequest := xRejectRequest,
     xFinishActions := xFinishActions, udiAuthorityID := udiAuthorityID);
 fbSequence(xEnable := xSequenceEnabled, stConfig := stConfig, udiDeltaMs := 20,
+    stTraceTime := stTraceTime,
     stCommand := stCommand, stRecipeCandidate := stRecipe,
     stAuthority := fbControlMock.stAuthority, stControlResult := fbControlMock.stResult,
     stControlRuntime := fbControlMock.stRuntime,

@@ -1,11 +1,13 @@
-# FB_Sequence — base 0.1
+# FB_Sequence — contrato 0.2 de rastreabilidade
 
 Base em Structured Text para uma Sequence subordinada à autoridade do **Control**.
 Este repositório contém o motor de sequência, seus contratos e demonstrações offline.
 O **Service é desenvolvido em outro repositório**.
 
-**Status:** fontes para revisão e integração. Há verificações estáticas executáveis e
-testes ST para o simulador; a compilação no EcoStruxure Machine Expert 2.6 ainda é um gate pendente.
+**Status:** revisão preparada para testes isolados. Há verificações estáticas executáveis e
+testes ST para o simulador; compilação e execução desta revisão 0.2 no
+EcoStruxure Machine Expert 2.6 ainda são gates pendentes. Resultados relatados
+para a base anterior não validam automaticamente esta alteração.
 Não é um `.project` nativo nem uma biblioteca compilada. Nenhum arquivo acessa IO físico.
 
 ## Fronteiras acordadas
@@ -14,7 +16,8 @@ Não é um `.project` nativo nem uma biblioteca compilada. Nenhum arquivo acessa
 |---|---|---|
 | Control | Autoridade, arbitragem, equipamentos, diagnóstico de safety, alarmes de equipamento e runtime correspondente | Concede permissões, consome pedidos no Control IF e publica resultados e runtime |
 | Sequence | Ciclo do processo, receita aplicada, etapas, critérios, tempos e ocorrências de processo | Solicita ações e publica somente quando Control permite |
-| Service | Entrada de comandos externos, entrega de receita, exposição de dados, transporte de eventos e auditoria | Consome o contrato público autorizado da Sequence |
+| Service v0.2 | Observação, normalização e exposição de fatos para consumidores externos | Recebe uma projeção autorizada; não despacha comandos nem armazena receitas nesta referência |
+| Integração externa futura | Dispatcher de comandos, catálogo de receitas e recibo de posse dos eventos completos | Um escritor por canal, sem assumir a autoridade do Control |
 
 Diagnóstico de safety não substitui uma função de proteção. A Sequence não concede
 permissões a si mesma, não contorna o Control e não escreve estados de equipamentos.
@@ -27,7 +30,12 @@ permissões a si mesma, não contorna o Control e não escreve estados de equipa
 - `FB_SEQ_RecipeValidator`: validação estrutural; receita copiada em LoadRecipe e mantida
   imutável durante o lote. O Control valida os perfis e parâmetros aplicáveis antes de executar.
 - `FB_SEQ_QualifiedTimer`: tempo acumulado somente com condições qualificadas; Hold conserva o saldo.
-- `FB_SEQ_EventQueue`: 32 ocorrências com ID, snapshot de identidade, ACK e contador de perda.
+- `FB_SEQ_EventQueue`: 32 ocorrências com snapshot imutável, ACK e contador de perda;
+  fila cheia descarta o novo evento. A fila é volátil, não um historiador.
+- Eventos 0.2: identidade do produtor/máquina, tempo de origem e sua qualidade,
+  contexto anterior, receita/lote pedidos e aplicados, intenção, recurso e prompt.
+- Runtime 0.2: revisão de publicação, contexto de tempo, `xTraceReady` e
+  `xTraceHistoryComplete`. Nenhum destes sinais certifica persistência ou auditoria completa.
 - `F_SEQ_AddMs`: soma de milissegundos com saturação.
 - `GVL_SEQ_IF` e `PRG_Task_Sequence`: ponto de integração dos contratos.
 - Mock de Control, demonstração e POUs de testes em `tests/`, sem dependência de hardware.
@@ -64,13 +72,33 @@ O Control precisa conferir a autorização novamente ao consumir cada pedido.
 6. [Inventário](docs/INVENTORY.md): fontes e dependências geradas.
 7. [Roadmap](docs/ROADMAP.md): próximos incrementos sem invadir Service/Control.
 
-## Endurecimento do ciclo e referência ISA
+## Evolução 0.2 e contrato com Service
 
 Consulte [ciclo completo](docs/LIFECYCLE.md) e [alinhamento normativo](docs/STANDARDS_ALIGNMENT.md).
-Esta revisão corrige timeout ao entrar em encerramento, correlação de autoridade,
-qualificação após Resume e contexto de Reset. O contrato 0.1 é preservado.
-A ponte executável em ST está em `FB_Service/integrations/sequence`, com teste
-integrado offline e dependências travadas por hashes; execução no IDE continua pendente.
+Esta revisão preserva o endurecimento de timeout de encerramento, correlação de
+autoridade, qualificação após Resume e contexto de Reset da base `0480b33`.
+Amplia o schema para 0.2; enums existentes conservam seus valores, mas layouts
+binários antigos não são compatíveis por presunção.
+
+A referência real de Service é a branch `refactor/service-core-v0.2`, commit
+`b2140a5ab4756f1c435ebcf7848270dad2f097d5` (schema de transporte Service **2.0**).
+Ela é de observação: não contém o
+dispatcher antigo nem `ST_SVC_SequenceSnapshot`. A projeção opcional em
+`integration/service_v02/` conserva o `ST_SEQ_EVENT` completo ao lado da visão
+genérica parcial `ST_SVC_EventInput`. Sem recibo explícito da posse do envelope
+completo, não há ACK para retirar o evento da Sequence.
+
+O [contrato do adaptador](integration/service_v02/README.md) registra também a
+lacuna de ingestão do Service: observar/deduplicar um evento não demonstra sua
+entrada no outbox. A ligação automática permanece bloqueada até haver retenção
+integral e recibo transacional definidos.
+
+**Integração ainda não concluída.** A ordem permanece: Sequence isolada → Service
+isolado → integração dos dois → futuro `FB_Central_Cip_Control`. Hoje é preparação;
+nenhuma nova execução no IDE está sendo atribuída ao usuário.
+
+Leia [migração 0.1 → 0.2](docs/MIGRATION_0_2.md) antes de atualizar os objetos.
+Os quatro Watches existentes são preservados.
 
 ## Verificação local
 
@@ -83,5 +111,6 @@ python3 tools/build_bundle.py
 ```
 
 O bundle em `build/` é uma conveniência textual; não substitui a compilação no IDE.
-Os contratos 0.1 são uma proposta implementada aqui, ainda a alinhar com o adaptador
-do Service e com o futuro Control. Não reutilize IDs antigos da IHM sem um mapeamento explícito.
+O contrato 0.2 prepara rastreabilidade de origem. Persistência, autenticação,
+retenção, reconciliação e integração real ainda exigem evidência própria.
+Não reutilize IDs antigos da IHM sem um mapeamento explícito.

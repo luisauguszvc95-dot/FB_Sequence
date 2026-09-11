@@ -1,0 +1,19 @@
+{
+  "repository": "luisauguszvc95-dot/FB_Service",
+  "branch": "refactor/service-core-v0.2",
+  "commit": "b2140a5ab4756f1c435ebcf7848270dad2f097d5",
+  "wire_schema": "2.0",
+  "source_schema": "0.2",
+  "hash_algorithm": "git-blob-sha1",
+  "files": {
+    "src/00_types/E_SVC_ActorKind.st": "e1a2a2723f4283576a1f11292e94141fef624ab2",
+    "src/00_types/E_SVC_DataQuality.st": "badc979f440ef40b956d873602a667a88a138f5b",
+    "src/00_types/E_SVC_TimeQuality.st": "eec92145c9fdacd89a391d283ea1b221bb647289",
+    "src/00_types/E_SVC_Domain.st": "8314c7ce34feee39f9a5a8162a4942da146ed688",
+    "src/00_types/E_SVC_EventKind.st": "86a070f8cbb0c8cfc53d3f6fa2b6dfd57d7f5335",
+    "src/00_types/ST_SVC_SourceHeader.st": "5014ee506b71180216a6f3a004e987493e68265b",
+    "src/00_types/ST_SVC_TimeContext.st": "eae9f1fd6b8cc0da884ff3922ffec0bc7d32324b",
+    "src/00_types/ST_SVC_OperationsContext.st": "2049d7d8765a632754a6daaf53cd9e67aa4e9286",
+    "src/00_types/ST_SVC_EventInput.st": "fba699346d59c8a68ca1ef6ad2728bce2bc47887"
+  }
+}

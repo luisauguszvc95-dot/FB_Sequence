@@ -1,6 +1,9 @@
 # Ciclo do motor e critérios verificáveis
 
-Esta é a especificação do comportamento implementado pelo template 0.1 em ST.
+Esta é a especificação do ciclo endurecido na base 0.1 e preservado no contrato 0.2.
+A revisão 0.2 acrescenta eventos e proveniência; os critérios procedurais abaixo
+não foram convertidos em uma nova máquina de estados. Ver também
+[migração 0.2](MIGRATION_0_2.md) e [validação](VALIDATION.md).
 Os nomes de estados apoiam a separação entre coordenação procedural e funções de
 equipamento; não representam declaração de conformidade integral ISA-88 ou PackML.
 O motor atual executa uma lista linear de até 16 etapas. Ramos, paralelismo,

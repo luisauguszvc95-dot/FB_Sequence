@@ -3,6 +3,7 @@ VAR_INPUT
     xEnable : BOOL;
     stConfig : ST_SEQ_CONFIG;
     udiDeltaMs : UDINT; // Actual elapsed time from the caller's monotonic clock.
+    stTraceTime : ST_SEQ_TRACE_TIME; // Optional source timestamp; never inferred from cycle delta.
     stCommand : ST_SEQ_COMMAND_REQUEST;
     stRecipeCandidate : ST_SEQ_RECIPE;
     stAuthority : ST_SEQ_CONTROL_AUTHORITY;
@@ -25,13 +26,14 @@ VAR
     fbRecipeValidator : FB_SEQ_RecipeValidator;
     fbQualified : FB_SEQ_QualifiedTimer;
     fbEvents : FB_SEQ_EventQueue;
+    fbEventBuilder : FB_SEQ_EventBuilder;
     stCfg : ST_SEQ_CONFIG;
     stRecipe : ST_SEQ_RECIPE;
     stInternal : ST_SEQ_RUNTIME;
     stResult : ST_SEQ_COMMAND_RESULT;
     stIntent : ST_SEQ_CONTROL_REQUEST;
     stDesired : ST_SEQ_CONTROL_REQUEST;
-    stNewEvent : ST_SEQ_EVENT;
+    stBefore : ST_SEQ_RUNTIME;
     stEmptyRuntime : ST_SEQ_RUNTIME;
     stEmptyResult : ST_SEQ_COMMAND_RESULT;
     stEmptyRequest : ST_SEQ_CONTROL_REQUEST;
@@ -64,7 +66,9 @@ VAR
     udiIntentWaitMs : UDINT;
     udiNextIntentID : UDINT;
     udiLastBatchID : UDINT;
-    udiBatchBefore : UDINT;
+    uiEventIndex : UINT;
+    udiCompletedStepElapsedMs : UDINT;
+    udiCompletedQualifiedMs : UDINT;
     udiBatchAuthorityID : UDINT;
     udiNextPromptID : UDINT;
     udiDelta : UDINT;
@@ -76,9 +80,11 @@ IF NOT xInitialized THEN
     stCfg := stConfig;
     xInitialized := TRUE;
     stInternal.uiContractMajor := 0;
-    stInternal.uiContractMinor := 1;
+    stInternal.uiContractMinor := 2;
     stInternal.uiProcessID := stCfg.uiProcessID;
     stInternal.udiSessionID := stCfg.udiSessionID;
+    stInternal.uiMachineID := stCfg.uiMachineID;
+    stInternal.uiProducerSourceID := stCfg.uiProducerSourceID;
 END_IF;
 xConfigOK := (stCfg.uiProcessID > 0) AND (stCfg.udiSessionID > 0)
     AND (stCfg.udiMaxFeedbackAgeMs > 0) AND (stCfg.udiTransitionTimeoutMs > 0)
@@ -87,7 +93,9 @@ xConfigOK := (stCfg.uiProcessID > 0) AND (stCfg.udiSessionID > 0)
     AND (stConfig.udiSessionID = stCfg.udiSessionID)
     AND (stConfig.udiMaxFeedbackAgeMs = stCfg.udiMaxFeedbackAgeMs)
     AND (stConfig.udiTransitionTimeoutMs = stCfg.udiTransitionTimeoutMs)
-    AND (stConfig.udiMaxCycleMs = stCfg.udiMaxCycleMs);
+    AND (stConfig.udiMaxCycleMs = stCfg.udiMaxCycleMs)
+    AND (stConfig.uiMachineID = stCfg.uiMachineID)
+    AND (stConfig.uiProducerSourceID = stCfg.uiProducerSourceID);
 xCycleOK := (udiDeltaMs > 0) AND (udiDeltaMs <= stCfg.udiMaxCycleMs);
 udiDelta := 0;
 IF xCycleOK THEN udiDelta := udiDeltaMs; END_IF;
@@ -131,7 +139,11 @@ xTerminal := (stInternal.eState = E_SEQ_STATE.Idle)
 xActive := NOT xTerminal AND (stInternal.eState <> E_SEQ_STATE.Faulted);
 eBefore := stInternal.eState;
 uiStepBefore := stInternal.uiStepIndex;
-udiBatchBefore := stInternal.udiBatchID;
+stBefore := stInternal;
+stInternal.udiRevision := F_SEQ_AddMs(stInternal.udiRevision, 1);
+stInternal.udiTickMs := stTraceTime.udiTickMs;
+stInternal.xTimeValid := stTraceTime.xValid;
+stInternal.xSyntheticTime := stTraceTime.xSynthetic;
 xConfirm := FALSE;
 xRecipeLoadedEvent := FALSE;
 xStepDone := FALSE;
@@ -437,6 +449,9 @@ IF (stInternal.eState = E_SEQ_STATE.Faulted) AND (eBefore <> E_SEQ_STATE.Faulted
 END_IF;
 
 // 06 - Enter step once. Prompt IDs cannot be recycled within a session.
+// Capture completed-step timing BEFORE resetting the timer for the next step.
+udiCompletedStepElapsedMs := stInternal.udiStepElapsedMs;
+udiCompletedQualifiedMs := fbQualified.udiElapsedMs;
 xStepChanged := (stInternal.uiStepIndex <> uiStepBefore);
 IF xStepChanged THEN
     stInternal.udiStepElapsedMs := 0;
@@ -447,11 +462,13 @@ IF xStepChanged THEN
 END_IF;
 stInternal.uiStepID := 0;
 stInternal.uiPhaseID := 0;
+stInternal.uiProfileID := 0;
 stInternal.xWaitingOperator := FALSE;
 IF (stInternal.uiStepIndex >= 1) AND (stInternal.uiStepIndex <= stRecipe.uiStepCount)
    AND (stInternal.uiStepIndex <= 16) THEN
     stInternal.uiStepID := stRecipe.astSteps[stInternal.uiStepIndex].uiStepID;
     stInternal.uiPhaseID := stRecipe.astSteps[stInternal.uiStepIndex].uiPhaseID;
+    stInternal.uiProfileID := stRecipe.astSteps[stInternal.uiStepIndex].uiProfileID;
     IF (stInternal.eState = E_SEQ_STATE.Running)
        AND (stRecipe.astSteps[stInternal.uiStepIndex].eKind = E_SEQ_STEP_KIND.WaitOperator) THEN
         IF stInternal.udiPromptID = 0 THEN
@@ -528,43 +545,21 @@ IF fbGate.xNew THEN stResult.eStateAfter := stInternal.eState; END_IF;
 udiAck := 0;
 IF xCanPublish AND (udiEventAckSessionID = stCfg.udiSessionID) THEN udiAck := udiEventAckID; END_IF;
 fbEvents(xPush := FALSE, stEvent := stEmptyEvent, udiAckEventID := udiAck);
-stNewEvent := stEmptyEvent;
-stNewEvent.udiSessionID := stCfg.udiSessionID;
-stNewEvent.udiAuthorityID := stAuthority.udiAuthorityID;
-stNewEvent.uiProcessID := stCfg.uiProcessID;
-stNewEvent.udiBatchID := stInternal.udiBatchID;
-// Reset clears the public runtime's batch, but its audit events must still
-// identify the batch whose lifecycle was reset.
-IF (stInternal.udiBatchID = 0) AND (udiBatchBefore > 0) THEN
-    stNewEvent.udiBatchID := udiBatchBefore;
-END_IF;
-stNewEvent.udiRecipeID := stInternal.udiRecipeID;
-stNewEvent.udiRecipeRevision := stInternal.udiRecipeRevision;
-stNewEvent.eState := stInternal.eState;
-stNewEvent.uiStepID := stInternal.uiStepID;
-stNewEvent.eReason := stInternal.eReason;
-IF stInternal.eState <> eBefore THEN
-    stNewEvent.eKind := E_SEQ_EVENT_KIND.StateChanged;
-    fbEvents(xPush := TRUE, stEvent := stNewEvent, udiAckEventID := 0);
-END_IF;
-IF xStepChanged THEN
-    stNewEvent.eKind := E_SEQ_EVENT_KIND.StepChanged;
-    fbEvents(xPush := TRUE, stEvent := stNewEvent, udiAckEventID := 0);
-END_IF;
-IF xRecipeLoadedEvent THEN
-    stNewEvent.eKind := E_SEQ_EVENT_KIND.RecipeLoaded;
-    fbEvents(xPush := TRUE, stEvent := stNewEvent, udiAckEventID := 0);
-END_IF;
-IF fbGate.xNew THEN
-    stNewEvent.eKind := E_SEQ_EVENT_KIND.CommandResult;
-    stNewEvent.udiRequestID := stResult.udiRequestID;
-    stNewEvent.udiCommandSessionID := stResult.udiSessionID;
-    stNewEvent.uiSourceID := stResult.uiSourceID;
-    stNewEvent.eCommand := stResult.eCommand;
-    stNewEvent.eCommandResult := stResult.eResult;
-    stNewEvent.eReason := stResult.eReason;
-    fbEvents(xPush := TRUE, stEvent := stNewEvent, udiAckEventID := 0);
-END_IF;
+// The builder observes completed scan facts; it never owns execution or delivery.
+fbEventBuilder(stBefore := stBefore, stAfter := stInternal,
+    stCommand := stCommand, stResult := stResult, xCommandNew := fbGate.xNew,
+    xRecipeLoaded := xRecipeLoadedEvent, xStepCompleted := xStepDone,
+    xConfirmed := xConfirm AND xStepDone,
+    udiCompletedStepElapsedMs := udiCompletedStepElapsedMs,
+    udiCompletedQualifiedMs := udiCompletedQualifiedMs);
+FOR uiEventIndex := 1 TO fbEventBuilder.uiCount DO
+    fbEvents(xPush := TRUE, stEvent := fbEventBuilder.astEvents[uiEventIndex], udiAckEventID := 0);
+END_FOR;
+stInternal.xTraceHistoryComplete := (fbEvents.udiDropped = 0) AND NOT fbEvents.xIDExhausted;
+stInternal.xTraceReady := xConfigOK AND (stCfg.uiMachineID > 0)
+    AND (stCfg.uiProducerSourceID > 0) AND stTraceTime.xValid
+    AND NOT stTraceTime.xSynthetic AND stInternal.xTraceHistoryComplete
+    AND (stInternal.udiRevision < UDINT#4294967295);
 
 // 09 - Publication is granted by Control, independently from execution permission.
 // Only invalid/empty envelopes are exposed while denied; local state remains in stInternal.

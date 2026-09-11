@@ -1,4 +1,4 @@
-# Arquitetura do FB_Sequence — v0.1
+# Arquitetura do FB_Sequence — v0.2
 
 ## Objetivo e alcance
 
@@ -8,7 +8,7 @@ etapas dentro dessa concessão. Só emite requests, avança a execução ou publ
 resultados quando a permissão correspondente do Control está válida. Cada
 instância representa uma execução de um processo/unidade.
 
-A v0.1 é um motor sequencial **linear, com até 16 etapas**. Cada etapa identifica
+A v0.2 permanece um motor sequencial **linear, com até 16 etapas**. Cada etapa identifica
 sua fase por `uiPhaseID` e seu perfil por `uiProfileID`. O perfil deve ser
 interpretado por um adaptador de processo conhecido pelo Control; o número
 sozinho não define equipamentos, saídas ou comportamento físico.
@@ -22,7 +22,8 @@ O projeto não declara conformidade ISA/IEC nem constitui lógica de segurança.
 
 | Camada | O que decide e mantém | O que troca com a Sequence |
 | --- | --- | --- |
-| Service | Canais de acesso, roteamento, identidade da origem, publicação e persistência externa | Entrega pedidos/receita; consome resultado, status e eventos |
+| Service v0.2 de referência | Observação e normalização de fatos para consumidores | Consome projeção autorizada; não implementa dispatcher nem catálogo de receitas |
+| Integração externa futura | Canais autenticados, dispatcher, catálogo de receitas e retenção/recibos | Entrega pedidos/receita e assume eventos completos sem alterar sua origem |
 | Sequence | Ciclo de execução, receita aplicada, etapa atual, transições e tempo qualificado, dentro da concessão do Control | Publica intenções autorizadas; consome autoridade e feedback correlacionado |
 | Adaptador de processo | Tradução de fase/perfil para as funções já existentes no Control | Interpreta intenções; consolida execução, conclusão e liberação |
 | Control | Autoridade operacional, disponibilidade e arbitragem dos equipamentos, funções de equipamento e feedback | Concede/revoga permissões; aceita/rejeita intenções e informa execução real |
@@ -38,9 +39,10 @@ Control futuro é o **Control IF**, com buffers separados de requests e results.
 - Sequence lê os results do Control IF e uma projeção coerente do runtime
   publicado pelo Control. Escreve somente seus requests no Control IF e seu
   próprio runtime de processo/lote/etapa/temporizadores/ocorrências.
-- Service entrega comandos externos e publica os runtimes de seus respectivos
-  donos quando autorizados. Não assume a escrita dos estados publicados por
-  Control ou Sequence e não concede autoridade operacional à Sequence.
+- O Service observado publica fatos de seus respectivos donos quando autorizados.
+  O plano de comandos da Sequence continua separado, para futuro dispatcher/catalogador.
+  Nenhum deles assume a escrita dos estados de Control/Sequence ou concede
+  autoridade operacional à Sequence.
 
 `ST_SEQ_CONTROL_RUNTIME` é uma projeção de leitura para o processo, não uma
 segunda base de equipamentos. `ST_SEQ_RUNTIME` é o runtime da Sequence. O
@@ -58,7 +60,7 @@ desse árbitro; duas instâncias não podem conceder o mesmo recurso a si própr
 
 | Direção | Conteúdo | Significado |
 | --- | --- | --- |
-| Service → Sequence | Comando identificado e receita candidata | Pedido sujeito à validação pela Sequence |
+| Dispatcher/catálogo externo → Sequence | Comando identificado e receita candidata | Contrato previsto; não implementado pelo Service v0.2 observado |
 | Sequence → Service | Resultado do pedido | Aceitação/rejeição do comando identificado |
 | Sequence → Service | Status | Estado observado da execução, receita aplicada e etapa |
 | Sequence → Service | Eventos | Mudanças e ocorrências produzidas pela execução |
@@ -157,10 +159,10 @@ No contrato atual, `udiTimeoutMs` mede o tempo ativo da etapa, inclui intervalos
 de `Running` sem qualificação e exclui `Held`. `udiQualifiedMs` é a duração alvo
 do critério `WaitQualified`. O runtime expõe `udiStepElapsedMs`,
 `udiQualifiedElapsedMs` e `udiStateElapsedMs`; não há um totalizador de duração
-de lote nesta v0.1.
+de lote nesta v0.2.
 
 `FB_SEQ_QualifiedTimer` conserva o acumulado quando desabilitado ou sem
-qualificação; o reset prevalece e zera o valor. A v0.1 implementa, portanto,
+qualificação; o reset prevalece e zera o valor. A v0.2 implementa, portanto,
 tempo qualificado acumulado, não uma exigência genérica de duração contínua.
 Uma fase que exija reiniciar a contagem a cada perda de condição precisa dessa
 política explicitamente implementada.
@@ -215,6 +217,36 @@ nos estados ativos. Trocar a ação de encerramento para `Release` não reinicia
 tempo do estado. `Faulted` não ganha um encerramento fictício quando esse prazo
 passa: a confirmação real e a recuperação continuam necessárias.
 
+## Rastreabilidade 0.2
+
+A origem de cada fato fica congelada em `ST_SEQ_EVENT`: máquina, produtor,
+processo/sessão, estado anterior, receita/lote, etapa/fase/perfil, comando e
+intenção associados. `uiProducerSourceID` identifica quem produz o fato;
+`uiSourceID` continua sendo a origem declarada do comando, sem autenticação
+implícita. Pedidos rejeitados conservam receita/lote solicitados separadamente
+da receita/lote realmente aplicados.
+
+`ST_SEQ_TRACE_TIME` é fornecido pelo chamador e começa inválido. O motor não
+inventa UTC e não transforma contagens de scans em tempo real. A demonstração
+marca seus ticks como sintéticos. Recepção, persistência e eventual correlação
+com UTC pertencem a envelopes adicionais, sem reescrever o fato de origem.
+
+`xTraceReady` exige identidade de origem, tempo válido não sintético e revisão
+de publicação não esgotada. Não impede a execução quando falso e não significa
+entrega durável. `xTraceHistoryComplete` sinaliza ausência de perda local conhecida
+na sessão; uma perda fica latente até nova inicialização. ACK posterior não
+reconstrói eventos descartados. Ausência de perda local não prova histórico
+completo através de reinícios, redes e bancos de dados.
+
+A fila conserva 32 eventos e descarta novos quando cheia. Mais tipos de evento
+aumentam a pressão sobre a mesma capacidade. O consumidor deve assumir o envelope
+completo antes de ACK, com política de retenção e backpressure explícita.
+A projeção genérica do Service v0.2 não preserva sozinha todos os campos da
+Sequence; por isso o adaptador opcional conserva uma cópia integral separada.
+
+Não foram implementados parâmetros tipados/unidades, hash do conteúdo da receita,
+hierarquia procedural completa, persistência de lote ou taxonomia geral de motivos.
+
 ## Organização e evolução
 
 O conjunto mínimo separa os tipos públicos, a temporização qualificada, o motor
@@ -226,7 +258,7 @@ O ponto de aplicação é `PRG_Task_Sequence`, que chama uma instância do motor
 troca seus contratos por `GVL_SEQ_IF`. Testes e mocks ficam em `tests`; não
 fazem parte do adaptador Control de uma aplicação.
 
-Não fazem parte desta v0.1:
+Não fazem parte desta v0.2:
 
 - GRAFCET/SFC arbitrário, bifurcações, paralelismo ou etapas hierárquicas.
 - Implementação de controle de motores, válvulas, aquecimento ou I/O.

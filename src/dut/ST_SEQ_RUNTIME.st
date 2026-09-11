@@ -24,5 +24,14 @@ STRUCT
     udiResourceToken : UDINT;
     udiLastControlIntentID : UDINT;
     uiControlReasonID : UINT;
+    uiMachineID : UINT;
+    uiProducerSourceID : UINT;
+    uiProfileID : UINT;
+    udiRevision : UDINT; // Monotonic publication generation; saturates, never silently wraps.
+    udiTickMs : UDINT;
+    xTimeValid : BOOL;
+    xSyntheticTime : BOOL;
+    xTraceReady : BOOL; // Provenance identity + non-synthetic valid time; NOT durable delivery.
+    xTraceHistoryComplete : BOOL; // No locally known loss in this boot. Not end-to-end proof.
 END_STRUCT
 END_TYPE

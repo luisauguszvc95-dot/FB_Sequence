@@ -8,6 +8,7 @@ fbSequence(
     xEnable := GVL_SEQ_IF.xEnable,
     stConfig := GVL_SEQ_IF.stConfig,
     udiDeltaMs := GVL_SEQ_IF.udiDeltaMs,
+    stTraceTime := GVL_SEQ_IF.stTraceTime,
     stCommand := GVL_SEQ_IF.stCommand,
     stRecipeCandidate := GVL_SEQ_IF.stRecipeCandidate,
     stAuthority := GVL_SEQ_IF.stAuthority,

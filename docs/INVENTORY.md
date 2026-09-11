@@ -2,7 +2,7 @@
 
 Gerado por `python tools/build_bundle.py --source-dir src --source-dir tests`; não editar manualmente.
 
-32 objetos. A ordem abaixo respeita as dependências identificadas.
+36 objetos. A ordem abaixo respeita as dependências identificadas.
 
 | Ordem | Objeto | Tipo | Dependências | Fonte |
 | --- | --- | --- | --- | --- |
@@ -24,20 +24,24 @@ Gerado por `python tools/build_bundle.py --source-dir src --source-dir tests`; n
 | 16 | `ST_SEQ_STEP` | struct | `E_SEQ_STEP_KIND` | [ST_SEQ_STEP.st](../src/dut/ST_SEQ_STEP.st) |
 | 17 | `ST_SEQ_RECIPE` | struct | `ST_SEQ_STEP` | [ST_SEQ_RECIPE.st](../src/dut/ST_SEQ_RECIPE.st) |
 | 18 | `ST_SEQ_RUNTIME` | struct | `E_SEQ_REASON`, `E_SEQ_STATE` | [ST_SEQ_RUNTIME.st](../src/dut/ST_SEQ_RUNTIME.st) |
-| 19 | `F_SEQ_AddMs` | function | — | [F_SEQ_AddMs.st](../src/functions/F_SEQ_AddMs.st) |
-| 20 | `FB_SEQ_CommandGate` | fb | `E_SEQ_REASON`, `ST_SEQ_COMMAND_REQUEST` | [FB_SEQ_CommandGate.st](../src/fb/FB_SEQ_CommandGate.st) |
-| 21 | `FB_SEQ_EventQueue` | fb | `F_SEQ_AddMs`, `ST_SEQ_EVENT` | [FB_SEQ_EventQueue.st](../src/fb/FB_SEQ_EventQueue.st) |
-| 22 | `FB_SEQ_QualifiedTimer` | fb | `F_SEQ_AddMs` | [FB_SEQ_QualifiedTimer.st](../src/fb/FB_SEQ_QualifiedTimer.st) |
-| 23 | `FB_SEQ_RecipeValidator` | fb | `E_SEQ_REASON`, `E_SEQ_STEP_KIND`, `ST_SEQ_RECIPE` | [FB_SEQ_RecipeValidator.st](../src/fb/FB_SEQ_RecipeValidator.st) |
-| 24 | `FB_Sequence` | fb | `E_SEQ_ACTION`, `E_SEQ_CMD`, `E_SEQ_EVENT_KIND`, `E_SEQ_REASON`, `E_SEQ_RESULT`, `E_SEQ_STATE`, `E_SEQ_STEP_KIND`, `FB_SEQ_CommandGate`, `FB_SEQ_EventQueue`, `FB_SEQ_QualifiedTimer`, `FB_SEQ_RecipeValidator`, `F_SEQ_AddMs`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_COMMAND_RESULT`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_AUTHORITY`, `ST_SEQ_CONTROL_REQUEST`, `ST_SEQ_CONTROL_RESULT`, `ST_SEQ_CONTROL_RUNTIME`, `ST_SEQ_EVENT`, `ST_SEQ_RECIPE`, `ST_SEQ_RUNTIME` | [FB_Sequence.st](../src/fb/FB_Sequence.st) |
-| 25 | `FB_SEQ_ControlMock` | fb | `E_SEQ_ACTION`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_AUTHORITY`, `ST_SEQ_CONTROL_REQUEST`, `ST_SEQ_CONTROL_RESULT`, `ST_SEQ_CONTROL_RUNTIME` | [FB_SEQ_ControlMock.st](../tests/FB_SEQ_ControlMock.st) |
-| 26 | `GVL_SEQ_IF` | gvl | `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_COMMAND_RESULT`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_AUTHORITY`, `ST_SEQ_CONTROL_REQUEST`, `ST_SEQ_CONTROL_RESULT`, `ST_SEQ_CONTROL_RUNTIME`, `ST_SEQ_EVENT`, `ST_SEQ_RECIPE`, `ST_SEQ_RUNTIME` | [GVL_SEQ_IF.st](../src/gvl/GVL_SEQ_IF.st) |
-| 27 | `PRG_SEQ_AuthorityTests` | program | `E_SEQ_ACTION`, `E_SEQ_CMD`, `E_SEQ_RESULT`, `E_SEQ_STATE`, `E_SEQ_STEP_KIND`, `FB_Sequence`, `FB_SEQ_ControlMock`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_AUTHORITY`, `ST_SEQ_CONTROL_RUNTIME`, `ST_SEQ_RECIPE` | [PRG_SEQ_AuthorityTests.st](../tests/PRG_SEQ_AuthorityTests.st) |
-| 28 | `PRG_SEQ_Demo` | program | `E_SEQ_STEP_KIND`, `FB_Sequence`, `FB_SEQ_ControlMock`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_CONFIG`, `ST_SEQ_RECIPE` | [PRG_SEQ_Demo.st](../tests/PRG_SEQ_Demo.st) |
-| 29 | `PRG_SEQ_IntegrationTests` | program | `E_SEQ_ACTION`, `E_SEQ_CMD`, `E_SEQ_REASON`, `E_SEQ_RESULT`, `E_SEQ_STATE`, `E_SEQ_STEP_KIND`, `FB_Sequence`, `FB_SEQ_ControlMock`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_RESULT`, `ST_SEQ_CONTROL_RUNTIME`, `ST_SEQ_RECIPE` | [PRG_SEQ_IntegrationTests.st](../tests/PRG_SEQ_IntegrationTests.st) |
-| 30 | `PRG_SEQ_LifecycleTests` | program | `E_SEQ_ACTION`, `E_SEQ_CMD`, `E_SEQ_EVENT_KIND`, `E_SEQ_REASON`, `E_SEQ_RESULT`, `E_SEQ_STATE`, `E_SEQ_STEP_KIND`, `FB_Sequence`, `FB_SEQ_ControlMock`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_RUNTIME`, `ST_SEQ_RECIPE` | [PRG_SEQ_LifecycleTests.st](../tests/PRG_SEQ_LifecycleTests.st) |
-| 31 | `PRG_SEQ_SupportTests` | program | `E_SEQ_CMD`, `E_SEQ_REASON`, `E_SEQ_STEP_KIND`, `FB_SEQ_CommandGate`, `FB_SEQ_EventQueue`, `FB_SEQ_QualifiedTimer`, `FB_SEQ_RecipeValidator`, `F_SEQ_AddMs`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_EVENT`, `ST_SEQ_RECIPE` | [PRG_SEQ_SupportTests.st](../tests/PRG_SEQ_SupportTests.st) |
-| 32 | `PRG_Task_Sequence` | program | `FB_Sequence`, `GVL_SEQ_IF` | [PRG_Task_Sequence.st](../src/prg/PRG_Task_Sequence.st) |
+| 19 | `ST_SEQ_TRACE_TIME` | struct | — | [ST_SEQ_TRACE_TIME.st](../src/dut/ST_SEQ_TRACE_TIME.st) |
+| 20 | `F_SEQ_AddMs` | function | — | [F_SEQ_AddMs.st](../src/functions/F_SEQ_AddMs.st) |
+| 21 | `FB_SEQ_CommandGate` | fb | `E_SEQ_REASON`, `ST_SEQ_COMMAND_REQUEST` | [FB_SEQ_CommandGate.st](../src/fb/FB_SEQ_CommandGate.st) |
+| 22 | `FB_SEQ_EventBuilder` | fb | `E_SEQ_CMD`, `E_SEQ_EVENT_KIND`, `E_SEQ_RESULT`, `E_SEQ_STATE`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_COMMAND_RESULT`, `ST_SEQ_EVENT`, `ST_SEQ_RUNTIME` | [FB_SEQ_EventBuilder.st](../src/fb/FB_SEQ_EventBuilder.st) |
+| 23 | `FB_SEQ_EventQueue` | fb | `F_SEQ_AddMs`, `ST_SEQ_EVENT` | [FB_SEQ_EventQueue.st](../src/fb/FB_SEQ_EventQueue.st) |
+| 24 | `FB_SEQ_QualifiedTimer` | fb | `F_SEQ_AddMs` | [FB_SEQ_QualifiedTimer.st](../src/fb/FB_SEQ_QualifiedTimer.st) |
+| 25 | `FB_SEQ_RecipeValidator` | fb | `E_SEQ_REASON`, `E_SEQ_STEP_KIND`, `ST_SEQ_RECIPE` | [FB_SEQ_RecipeValidator.st](../src/fb/FB_SEQ_RecipeValidator.st) |
+| 26 | `FB_Sequence` | fb | `E_SEQ_ACTION`, `E_SEQ_CMD`, `E_SEQ_REASON`, `E_SEQ_RESULT`, `E_SEQ_STATE`, `E_SEQ_STEP_KIND`, `FB_SEQ_CommandGate`, `FB_SEQ_EventBuilder`, `FB_SEQ_EventQueue`, `FB_SEQ_QualifiedTimer`, `FB_SEQ_RecipeValidator`, `F_SEQ_AddMs`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_COMMAND_RESULT`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_AUTHORITY`, `ST_SEQ_CONTROL_REQUEST`, `ST_SEQ_CONTROL_RESULT`, `ST_SEQ_CONTROL_RUNTIME`, `ST_SEQ_EVENT`, `ST_SEQ_RECIPE`, `ST_SEQ_RUNTIME`, `ST_SEQ_TRACE_TIME` | [FB_Sequence.st](../src/fb/FB_Sequence.st) |
+| 27 | `FB_SEQ_ControlMock` | fb | `E_SEQ_ACTION`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_AUTHORITY`, `ST_SEQ_CONTROL_REQUEST`, `ST_SEQ_CONTROL_RESULT`, `ST_SEQ_CONTROL_RUNTIME` | [FB_SEQ_ControlMock.st](../tests/FB_SEQ_ControlMock.st) |
+| 28 | `GVL_SEQ_IF` | gvl | `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_COMMAND_RESULT`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_AUTHORITY`, `ST_SEQ_CONTROL_REQUEST`, `ST_SEQ_CONTROL_RESULT`, `ST_SEQ_CONTROL_RUNTIME`, `ST_SEQ_EVENT`, `ST_SEQ_RECIPE`, `ST_SEQ_RUNTIME`, `ST_SEQ_TRACE_TIME` | [GVL_SEQ_IF.st](../src/gvl/GVL_SEQ_IF.st) |
+| 29 | `PRG_SEQ_AuthorityTests` | program | `E_SEQ_ACTION`, `E_SEQ_CMD`, `E_SEQ_RESULT`, `E_SEQ_STATE`, `E_SEQ_STEP_KIND`, `FB_Sequence`, `FB_SEQ_ControlMock`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_AUTHORITY`, `ST_SEQ_CONTROL_RUNTIME`, `ST_SEQ_RECIPE` | [PRG_SEQ_AuthorityTests.st](../tests/PRG_SEQ_AuthorityTests.st) |
+| 30 | `PRG_SEQ_Demo` | program | `E_SEQ_STEP_KIND`, `FB_Sequence`, `FB_SEQ_ControlMock`, `F_SEQ_AddMs`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_CONFIG`, `ST_SEQ_RECIPE`, `ST_SEQ_TRACE_TIME` | [PRG_SEQ_Demo.st](../tests/PRG_SEQ_Demo.st) |
+| 31 | `PRG_SEQ_IntegrationTests` | program | `E_SEQ_ACTION`, `E_SEQ_CMD`, `E_SEQ_REASON`, `E_SEQ_RESULT`, `E_SEQ_STATE`, `E_SEQ_STEP_KIND`, `FB_Sequence`, `FB_SEQ_ControlMock`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_RESULT`, `ST_SEQ_CONTROL_RUNTIME`, `ST_SEQ_RECIPE` | [PRG_SEQ_IntegrationTests.st](../tests/PRG_SEQ_IntegrationTests.st) |
+| 32 | `PRG_SEQ_LifecycleTests` | program | `E_SEQ_ACTION`, `E_SEQ_CMD`, `E_SEQ_EVENT_KIND`, `E_SEQ_REASON`, `E_SEQ_RESULT`, `E_SEQ_STATE`, `E_SEQ_STEP_KIND`, `FB_Sequence`, `FB_SEQ_ControlMock`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_RUNTIME`, `ST_SEQ_RECIPE` | [PRG_SEQ_LifecycleTests.st](../tests/PRG_SEQ_LifecycleTests.st) |
+| 33 | `PRG_SEQ_SupportTests` | program | `E_SEQ_CMD`, `E_SEQ_REASON`, `E_SEQ_STEP_KIND`, `FB_SEQ_CommandGate`, `FB_SEQ_EventQueue`, `FB_SEQ_QualifiedTimer`, `FB_SEQ_RecipeValidator`, `F_SEQ_AddMs`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_EVENT`, `ST_SEQ_RECIPE` | [PRG_SEQ_SupportTests.st](../tests/PRG_SEQ_SupportTests.st) |
+| 34 | `PRG_SEQ_TraceEngineTests` | program | `E_SEQ_CMD`, `E_SEQ_EVENT_KIND`, `E_SEQ_REASON`, `E_SEQ_RESULT`, `E_SEQ_STATE`, `E_SEQ_STEP_KIND`, `FB_Sequence`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_CONFIG`, `ST_SEQ_CONTROL_AUTHORITY`, `ST_SEQ_RECIPE`, `ST_SEQ_TRACE_TIME` | [PRG_SEQ_TraceEngineTests.st](../tests/PRG_SEQ_TraceEngineTests.st) |
+| 35 | `PRG_SEQ_TraceTests` | program | `E_SEQ_CMD`, `E_SEQ_EVENT_KIND`, `E_SEQ_REASON`, `E_SEQ_RESULT`, `E_SEQ_STATE`, `FB_SEQ_EventBuilder`, `ST_SEQ_COMMAND_REQUEST`, `ST_SEQ_COMMAND_RESULT`, `ST_SEQ_RUNTIME` | [PRG_SEQ_TraceTests.st](../tests/PRG_SEQ_TraceTests.st) |
+| 36 | `PRG_Task_Sequence` | program | `FB_Sequence`, `GVL_SEQ_IF` | [PRG_Task_Sequence.st](../src/prg/PRG_Task_Sequence.st) |
 
 Verificação estática: declarações e nomes de arquivo, tipos utilizados, membros e valores
 de enums, delimitadores, ausência de endereçamento físico AT/%I/%Q e ciclos de dependência.

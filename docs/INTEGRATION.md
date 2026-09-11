@@ -1,4 +1,4 @@
-# Integração do FB_Sequence — v0.1
+# Integração do FB_Sequence — v0.2
 
 ## Ponto de partida
 
@@ -21,17 +21,51 @@ autoridade/feedback sem concessão fabricada. Configurar a identidade de sessão
 na inicialização e fornecer `udiDeltaMs` a partir da origem de tempo da aplicação.
 Testes e mocks pertencem a `tests`, separados do PRG de aplicação.
 
-## Conectar o Service
+## Referência do novo Service: observação, não comandos
 
 Os nomes efetivos e a matriz de escritores estão em
 [SERVICE_HANDOFF.md](SERVICE_HANDOFF.md). Este repositório não altera nem
 reestrutura o repositório Service.
 
+Referência: `FB_Service`, branch `refactor/service-core-v0.2`, commit
+`b2140a5ab4756f1c435ebcf7848270dad2f097d5`. Não substituir essa leitura por `main`
+antiga. O núcleo dessa revisão observa fatos; não implementa dispatcher de
+comandos, armazenamento de receitas nem `ST_SVC_SequenceSnapshot`.
+
+O adaptador opcional em `integration/service_v02/` projeta eventos em
+`ST_SVC_EventInput`, mantendo um `ST_SEQ_EVENT` integral separado. O tipo genérico
+nativo não carrega todo o envelope da Sequence e não fornece, por si, recibo
+de entrada correlacionado ao evento de origem. A projeção não é prova de integração
+validada nem de persistência. Não importar essa pasta na demo isolada.
+
+Somente um consumidor que tenha assumido o **envelope completo** pode emitir o
+recibo exigido para ACK. Copiar uma struct, aumentar um contador do Service ou
+receber MQTT PUBACK não demonstra essa posse e não autoriza retirar o evento.
+O comportamento padrão do adaptador é não confirmar. O Service permanece sem alterações.
+
+A versão de repositório Service v0.2 usa schema de transporte 2.0, não Sequence
+0.2. Consulte o [contrato detalhado do adaptador](../integration/service_v02/README.md)
+para os campos mapeados, qualidade temporal e lacuna entre deduplicação e outbox
+na ingestão do Service. Essa lacuna bloqueia ACK automático por contadores.
+
+Após recibo válido, o ACK permanece enquanto a mesma cabeça estiver exposta;
+não depende de um pulso de um scan. Durante revogação de publicação, o ACK e
+os dados públicos são suprimidos. Reautorização só restaura o ACK da mesma
+identidade já assumida, nunca confirma a próxima cabeça por efeito colateral.
+Sem tempo de origem válido, a projeção Service não é marcada válida; o envelope
+completo conserva a ocorrência e sua qualidade inválida para tratamento externo.
+
+## Plano de comandos externo, ainda separado
+
+Nos parágrafos abaixo, dispatcher/publicador designam componentes futuros da
+integração, não funções existentes do Service v0.2. A Sequence conserva seu
+contrato de comandos sem acoplá-lo ao núcleo de observação.
+
 A Sequence só fornece os payloads públicos enquanto o Control permite a
 publicação por `ST_SEQ_CONTROL_AUTHORITY.xAllowPublication`. Sem publicação
 válida, o Service não dispõe de um resultado de comando para presumir aceitação
 nem de um runtime atual. Deve invalidar sua apresentação e tratar a pendência
-no próprio canal. Autorização do usuário pelo Service não substitui essa
+no próprio canal. Autorização do usuário por um canal externo não substitui essa
 concessão operacional do Control.
 
 Retirar apenas a permissão de publicação não equivale a parar o processo: ele
@@ -39,15 +73,15 @@ pode continuar se requests/execução seguirem autorizados. Os eventos permanece
 na fila local até consumo permitido, sujeitos à sua capacidade. A supressão
 dos contadores públicos não indica que a fila interna esteja vazia.
 
-O Service entrega um pedido completo e coerente: comando, identificação da
+O dispatcher externo entrega um pedido completo e coerente: comando, identificação da
 origem/execução e os campos exigidos para aquele comando. A receita candidata
 deve estar integralmente publicada antes do pedido que solicita sua aplicação.
 
-O Service deve preservar a identidade do pedido durante retransmissões. Um
+O dispatcher deve preservar a identidade do pedido durante retransmissões. Um
 clique reenviado após perda de comunicação não deve virar um novo `Start`.
 Novo pedido e repetição do mesmo pedido são situações distintas.
 
-No contrato atual, o dispatcher único do Service fornece `udiRequestID`
+No contrato atual, o dispatcher externo único fornece `udiRequestID`
 estritamente crescente, sem wrap dentro de `udiSessionID`. Mantém `xValid`
 ativo e os campos estáveis até observar `ST_SEQ_COMMAND_RESULT` da mesma sessão
 e pedido. Há um slot de pedido e um resultado de admissão, não uma fila de
@@ -147,7 +181,7 @@ Para CIP compartilhado, manter separadas:
 - A execução do processo pela Sequence responsável pelo CIP.
 - A comunicação do resultado e a liberação confirmada.
 
-O transporte do pedido por Service não significa aceitação ou início do CIP.
+O transporte do pedido por um canal externo não significa aceitação ou início do CIP.
 Timeout, desconexão e reinício exigem reconciliação com o dono do recurso. O
 cliente não deve declarar o recurso livre porque deixou de receber mensagens.
 
@@ -190,7 +224,7 @@ O campo `udiAgeMs` em authority, result e runtime é metadado local calculado pe
 a observação de uma publicação coerente. Não é uma idade enviada pelo produtor.
 O envelope de transporte/mailbox precisa distinguir novas publicações de uma
 recópia do mesmo snapshot; recopiá-lo não deve zerar a idade. Essa geração ou
-heartbeat de transporte não está incluída no DUT v0.1 e pertence à integração
+heartbeat de transporte não está incluída nos DUTs Control IF desta revisão e pertence à integração
 entre tasks. Todos os demais sinais da projeção têm origem no Control.
 
 ## Verificação da integração
@@ -222,3 +256,9 @@ deve ser apresentada como se comprovasse as outras.
 
 A tabela de transições e a rastreabilidade dos cenários preparados estão em
 [LIFECYCLE.md](LIFECYCLE.md).
+
+Os campos de trace 0.2 não resolvem concorrência automaticamente: `udiRevision`
+identifica uma publicação, mas não torna a cópia atômica; `udiTickMs` identifica
+uma amostra de origem, mas não substitui a idade de recepção dos contratos Control.
+Antes da integração, concluir testes isolados da Sequence e do Service, como
+registrado no [ROADMAP.md](ROADMAP.md).

@@ -5,7 +5,7 @@
 // the head; this volatile queue is not a durable audit journal.
 // IDs are monotonic for this FB instance lifetime, never reset by commands.
 // On PLC reinitialization use a NEW SessionID and clear stale Service ACKs.
-// The full event identity downstream is (SessionID, ProcessID, EventID).
+// Across machines, identity is (MachineID, ProducerSourceID, ProcessID, SessionID, EventID).
 FUNCTION_BLOCK FB_SEQ_EventQueue
 VAR_INPUT
     xPush : BOOL;
