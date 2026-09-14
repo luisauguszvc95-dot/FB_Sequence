@@ -65,9 +65,10 @@ O Control precisa conferir a autorização novamente ao consumir cada pedido.
 ## Comece por estes arquivos
 
 Para testar a revisão 0.2 pelo efeito de cada entrada, use o
-[Manual de testes do FB_Sequence](docs/MANUAL_TESTES.md): 14 cenários causais,
-mapa dos componentes e quatro Watches da demonstração isolada. O manual registra
-expectativas verificáveis; sua publicação não declara os ensaios executados.
+[Manual de testes do FB_Sequence](docs/MANUAL_TESTES.md): 80 fichas com
+um diagrama por teste, índices por componente e tipo, glossário e quatro
+Watches da demonstração isolada. O PDF é específico da Sequence com seu
+ControlMock; sua publicação registra expectativas e não declara os ensaios executados.
 
 1. [Acordo para o Service](docs/SERVICE_HANDOFF.md): contratos e escritores por campo.
 2. [Arquitetura](docs/ARCHITECTURE.md): responsabilidades, ciclo e limitações.
@@ -119,3 +120,4 @@ O bundle em `build/` é uma conveniência textual; não substitui a compilação
 O contrato 0.2 prepara rastreabilidade de origem. Persistência, autenticação,
 retenção, reconciliação e integração real ainda exigem evidência própria.
 Não reutilize IDs antigos da IHM sem um mapeamento explícito.
+
