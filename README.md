@@ -64,6 +64,11 @@ O Control precisa conferir a autorização novamente ao consumir cada pedido.
 
 ## Comece por estes arquivos
 
+Para testar a revisão 0.2 pelo efeito de cada entrada, use o
+[Manual de testes do FB_Sequence](docs/MANUAL_TESTES.md): 14 cenários causais,
+mapa dos componentes e quatro Watches da demonstração isolada. O manual registra
+expectativas verificáveis; sua publicação não declara os ensaios executados.
+
 1. [Acordo para o Service](docs/SERVICE_HANDOFF.md): contratos e escritores por campo.
 2. [Arquitetura](docs/ARCHITECTURE.md): responsabilidades, ciclo e limitações.
 3. [Integração](docs/INTEGRATION.md): correlação, autoridade e snapshots entre tasks.
