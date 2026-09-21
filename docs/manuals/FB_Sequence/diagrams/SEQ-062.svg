@@ -1,1 +1,73 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="480" viewBox="0 0 1040 480" role="img" aria-labelledby="seq-062-title seq-062-desc"><title id="seq-062-title">SEQ-062</title><desc id="seq-062-desc">O erro de processo é semântico; a identidade já consumida não pode ser reutilizada.</desc><defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#536679"/></marker><marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#24577A"/></marker><marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#24577A"/></marker></defs><rect width="1040" height="480" fill="#ffffff"/><path d="M 284,112.0 L 301.0,112.0 Q 304,112.0 304.0,109.0 L 304.0,109.0 Q 304,106.0 307.0,106.0 L 388,106.0" fill="none" stroke="#536679" stroke-width="2"/><polygon points="388,106.0 378.0,101.0 378.0,111.0" fill="#536679"/><path d="M 526.0,160 L 526.0,166.0 Q 526.0,172 520.0,172.0 L 516.0,172.0 Q 508.0,172 508.0,180.0 L 508.0,328" fill="none" stroke="#536679" stroke-width="2" stroke-dasharray="6,5"/><polygon points="508.0,328 513.0,318.0 503.0,318.0" fill="#536679"/><path d="M 388,376.0 L 284,376.0" fill="none" stroke="#24577A" stroke-width="2" stroke-dasharray="6,5"/><polygon points="284,376.0 294.0,381.0 294.0,371.0" fill="#24577A"/><path d="M 652,388.0 L 664.0,388.0 Q 672,388.0 672.0,380.0 L 672.0,312.0 Q 672,304 680.0,304.0 L 728.0,304.0 Q 736,304 736.0,312.0 L 736.0,368.0 Q 736,376.0 744.0,376.0 L 756,376.0" fill="none" stroke="#536679" stroke-width="2"/><polygon points="756,376.0 746.0,371.0 746.0,381.0" fill="#536679"/><rect x="20" y="64" width="264" height="96" rx="4" fill="#F4F6F8" stroke="#CBD4DC" stroke-width="2"/><text x="152.0" y="107.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">ID 12</text><text x="152.0" y="131.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">processo errado</text><rect x="388" y="64" width="264" height="96" rx="4" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="520.0" y="119.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Consome identidade</text><rect x="388" y="328" width="264" height="96" rx="8" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="520.0" y="371.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">WrongProcess</text><text x="520.0" y="395.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">marca = 12</text><rect x="20" y="328" width="264" height="96" rx="8" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="152.0" y="371.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Corrige com ID 12</text><text x="152.0" y="395.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">sem novo pulso</text><rect x="756" y="328" width="264" height="96" rx="8" fill="#EDF1F4" stroke="#536679" stroke-width="2"/><text x="888.0" y="371.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Novo ID 13</text><text x="888.0" y="395.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">avalia correção</text><rect x="312.77734375" y="56.0" width="66.4453125" height="40" fill="#ffffff"/><text x="346.0" y="71.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">sessão</text><text x="346.0" y="91.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">válida</text><rect x="346.7984375" y="240.0" width="149.203125" height="20" fill="#ffffff"/><text x="421.4" y="255.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">processo diverge</text><rect x="289.3671875" y="346.0" width="93.265625" height="20" fill="#ffffff"/><text x="336.0" y="361.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">mesmo ID</text><rect x="633.22265625" y="274.0" width="141.5546875" height="20" fill="#ffffff"/><text x="704.0" y="289.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">nova identidade</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 480" width="1040" height="480" role="img" aria-labelledby="title-SEQ-062 desc-SEQ-062">
+<title id="title-SEQ-062">SEQ-062 — O erro de processo é semântico; a identidade já consumida não pode ser reutilizada.</title>
+<desc id="desc-SEQ-062">Nós: a: ID 12 processo errado; b: Consome identidade; c: WrongProcess marca = 12; d: Corrige com ID 12 sem novo pulso; e: Novo ID 13 avalia correção. Relações: ID 12 processo errado → Consome identidade: sessão válida (normal); Consome identidade → WrongProcess marca = 12: processo diverge (reject); WrongProcess marca = 12 → Corrige com ID 12 sem novo pulso: mesmo ID (return); WrongProcess marca = 12 → Novo ID 13 avalia correção: nova identidade (normal).</desc>
+<metadata id="diagram-source">{&quot;case_id&quot;:&quot;SEQ-062&quot;,&quot;diagram&quot;:{&quot;nodes&quot;:[{&quot;id&quot;:&quot;a&quot;,&quot;label&quot;:&quot;ID 12\nprocesso errado&quot;,&quot;role&quot;:&quot;input&quot;},{&quot;id&quot;:&quot;b&quot;,&quot;label&quot;:&quot;Consome identidade&quot;,&quot;role&quot;:&quot;process&quot;},{&quot;id&quot;:&quot;c&quot;,&quot;label&quot;:&quot;WrongProcess\nmarca = 12&quot;,&quot;role&quot;:&quot;output&quot;},{&quot;id&quot;:&quot;d&quot;,&quot;label&quot;:&quot;Corrige com ID 12\nsem novo pulso&quot;,&quot;role&quot;:&quot;output&quot;},{&quot;id&quot;:&quot;e&quot;,&quot;label&quot;:&quot;Novo ID 13\navalia correção&quot;,&quot;role&quot;:&quot;state&quot;}],&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;,&quot;label&quot;:&quot;sessão válida&quot;,&quot;kind&quot;:&quot;normal&quot;},{&quot;from&quot;:&quot;b&quot;,&quot;to&quot;:&quot;c&quot;,&quot;label&quot;:&quot;processo diverge&quot;,&quot;kind&quot;:&quot;reject&quot;},{&quot;from&quot;:&quot;c&quot;,&quot;to&quot;:&quot;d&quot;,&quot;label&quot;:&quot;mesmo ID&quot;,&quot;kind&quot;:&quot;return&quot;},{&quot;from&quot;:&quot;c&quot;,&quot;to&quot;:&quot;e&quot;,&quot;label&quot;:&quot;nova identidade&quot;,&quot;kind&quot;:&quot;normal&quot;}],&quot;caption&quot;:&quot;O erro de processo é semântico; a identidade já consumida não pode ser reutilizada.&quot;}}</metadata>
+<rect width="1040" height="480" fill="#FFFFFF"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#526779"/></marker></defs>
+<g data-from="a" data-to="b" data-kind="normal"><title>sessão válida</title>
+<path d="M 520.00 86.00 L 520.00 144.67" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="520.00,144.67 515.00,133.67 525.00,133.67" fill="#526779"/></g>
+<g data-from="b" data-to="c" data-kind="reject"><title>processo diverge</title>
+<polyline points="520.00,210.67 520.00,217.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="520.00,222.67 520.00,229.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="520.00,234.67 520.00,241.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="520.00,246.67 520.00,253.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="520.00,258.67 520.00,265.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="520.00,269.33 515.00,258.33 525.00,258.33" fill="#526779"/></g>
+<g data-from="c" data-to="d" data-kind="return"><title>mesmo ID</title>
+<polyline points="502.00,335.33 502.00,342.33" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="502.00,347.33 502.00,354.33" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="501.89,359.33 501.56,360.73 501.02,361.93 500.25,362.92 499.27,363.68 498.06,364.23 497.65,364.32" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="492.68,364.67 485.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="480.68,364.67 473.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="468.68,364.67 461.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="456.68,364.67 449.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="444.68,364.67 437.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="432.68,364.67 425.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="420.68,364.67 413.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="408.68,364.67 401.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="396.68,364.67 389.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="384.68,364.67 377.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="372.68,364.67 365.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="360.68,364.67 353.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="348.68,364.67 341.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="336.68,364.67 329.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="324.68,364.67 317.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="312.68,364.67 305.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="300.68,364.67 293.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="288.68,364.67 281.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="276.68,364.69 275.36,364.78 273.94,365.10 272.73,365.65 271.75,366.42 270.98,367.40 270.82,367.77" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="270.00,372.64 270.00,379.64" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="270.00,384.64 270.00,391.64" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="270.00,394.00 265.00,383.00 275.00,383.00" fill="#526779"/></g>
+<g data-from="c" data-to="e" data-kind="normal"><title>nova identidade</title>
+<path d="M 538.00 335.33 L 538.00 357.67 C 538.00 362.33 540.33 364.67 545.00 364.67 L 763.00 364.67 C 767.67 364.67 770.00 367.00 770.00 371.67 L 770.00 394.00" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="770.00,394.00 765.00,383.00 775.00,383.00" fill="#526779"/></g>
+<g data-node-id="a" data-role="input"><title>ID 12
+processo errado</title><rect x="230.00" y="20.00" width="580.00" height="66.00" rx="7" fill="#F4F6F8" stroke="#C0CED8" stroke-width="2"/>
+<text x="520.00" y="47.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">ID 12</text>
+<text x="520.00" y="73.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">processo errado</text>
+</g>
+<g data-node-id="b" data-role="process"><title>Consome identidade</title><rect x="230.00" y="144.67" width="580.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#526779" stroke-width="2"/>
+<text x="520.00" y="185.17" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Consome identidade</text>
+</g>
+<g data-node-id="c" data-role="output"><title>WrongProcess
+marca = 12</title><rect x="230.00" y="269.33" width="580.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#24577A" stroke-width="2"/>
+<text x="520.00" y="296.83" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">WrongProcess</text>
+<text x="520.00" y="322.83" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">marca = 12</text>
+</g>
+<g data-node-id="d" data-role="output"><title>Corrige com ID 12
+sem novo pulso</title><rect x="29.00" y="394.00" width="482.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#24577A" stroke-width="2"/>
+<text x="270.00" y="421.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Corrige com ID 12</text>
+<text x="270.00" y="447.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">sem novo pulso</text>
+</g>
+<g data-node-id="e" data-role="state"><title>Novo ID 13
+avalia correção</title><rect x="529.00" y="394.00" width="482.00" height="66.00" rx="7" fill="#EDF1F4" stroke="#526779" stroke-width="2"/>
+<text x="770.00" y="421.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Novo ID 13</text>
+<text x="770.00" y="447.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">avalia correção</text>
+</g>
+<g data-edge-label="0"><rect x="530.00" y="102.83" width="127.10" height="25.00" rx="3" fill="#FFFFFF"/><text x="593.55" y="121.83" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">sessão válida</text></g>
+<g data-edge-label="1"><rect x="530.00" y="227.50" width="156.67" height="25.00" rx="3" fill="#FFFFFF"/><text x="608.33" y="246.50" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">processo diverge</text></g>
+<g data-edge-label="2"><rect x="336.72" y="335.67" width="98.56" height="25.00" rx="3" fill="#FFFFFF"/><text x="386.00" y="354.67" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">mesmo ID</text></g>
+<g data-edge-label="3"><rect x="580.93" y="335.67" width="146.14" height="25.00" rx="3" fill="#FFFFFF"/><text x="654.00" y="354.67" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">nova identidade</text></g>
+</svg>

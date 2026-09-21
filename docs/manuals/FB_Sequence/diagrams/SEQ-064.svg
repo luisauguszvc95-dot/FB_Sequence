@@ -1,1 +1,116 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="480" viewBox="0 0 1040 480" role="img" aria-labelledby="seq-064-title seq-064-desc"><title id="seq-064-title">SEQ-064</title><desc id="seq-064-desc">xPush é um pedido por chamada; a fila é responsável pelos IDs dos eventos aceitos.</desc><defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#536679"/></marker><marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#24577A"/></marker><marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#24577A"/></marker></defs><rect width="1040" height="480" fill="#ffffff"/><path d="M 284,112.0 L 296.0,112.0 Q 304,112.0 304.0,120.0 L 304.0,164.0 Q 304,172 312.0,172.0 L 360.0,172.0 Q 368,172 368.0,164.0 L 368.0,114.0 Q 368,106.0 376.0,106.0 L 388,106.0" fill="none" stroke="#536679" stroke-width="2"/><polygon points="388,106.0 378.0,101.0 378.0,111.0" fill="#536679"/><path d="M 652,118.0 L 664.0,118.0 Q 672,118.0 672.0,126.0 L 672.0,164.0 Q 672,172 680.0,172.0 L 728.0,172.0 Q 736,172 736.0,164.0 L 736.0,114.0 Q 736,106.0 744.0,106.0 L 756,106.0" fill="none" stroke="#536679" stroke-width="2"/><polygon points="756,106.0 746.0,101.0 746.0,111.0" fill="#536679"/><path d="M 894.0,160 L 894.0,166.0 Q 894.0,172 888.0,172.0 L 888.0,172.0 Q 882.0,172 882.0,178.0 L 882.0,328" fill="none" stroke="#536679" stroke-width="2"/><polygon points="882.0,328 887.0,318.0 877.0,318.0" fill="#536679"/><path d="M 652,376.0 L 664.0,376.0 Q 672,376.0 672.0,368.0 L 672.0,312.0 Q 672,304 680.0,304.0 L 728.0,304.0 Q 736,304 736.0,312.0 L 736.0,374.0 Q 736,382.0 744.0,382.0 L 756,382.0" fill="none" stroke="#24577A" stroke-width="2" stroke-dasharray="6,5"/><polygon points="756,382.0 746.0,377.0 746.0,387.0" fill="#24577A"/><rect x="20" y="64" width="264" height="96" rx="4" fill="#F4F6F8" stroke="#CBD4DC" stroke-width="2"/><text x="152.0" y="119.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Evento com ID 900</text><rect x="388" y="64" width="264" height="96" rx="4" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="520.0" y="119.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Cada chamada TRUE</text><rect x="756" y="64" width="264" height="96" rx="8" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="888.0" y="107.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Fila atribui</text><text x="888.0" y="131.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">IDs 1 / 2 / 3</text><rect x="756" y="328" width="264" height="96" rx="8" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="888.0" y="371.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Cabeça mais antiga</text><text x="888.0" y="395.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">ID 1</text><rect x="388" y="328" width="264" height="96" rx="8" fill="#EDF1F4" stroke="#536679" stroke-width="2"/><text x="520.0" y="371.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Chamada FALSE</text><text x="520.0" y="395.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">sem inserção</text><rect x="270.7265625" y="184.0" width="130.546875" height="20" fill="#ffffff"/><text x="336.0" y="199.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">três chamadas</text><rect x="622.7109375" y="184.0" width="162.578125" height="20" fill="#ffffff"/><text x="704.0" y="199.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">um evento por vez</text><rect x="765.24109375" y="240.0" width="104.7578125" height="20" fill="#ffffff"/><text x="817.62" y="255.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">ordem FIFO</text><rect x="622.6875" y="274.0" width="162.625" height="20" fill="#ffffff"/><text x="704.0" y="289.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">preserva conteúdo</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 480" width="1040" height="480" role="img" aria-labelledby="title-SEQ-064 desc-SEQ-064">
+<title id="title-SEQ-064">SEQ-064 — xPush é um pedido por chamada; a fila é responsável pelos IDs dos eventos aceitos.</title>
+<desc id="desc-SEQ-064">Nós: a: Evento com ID 900; b: Cada chamada TRUE; c: Fila atribui IDs 1 / 2 / 3; d: Cabeça mais antiga ID 1; e: Chamada FALSE sem inserção. Relações: Evento com ID 900 → Cada chamada TRUE: três chamadas (normal); Cada chamada TRUE → Fila atribui IDs 1 / 2 / 3: um evento por vez (normal); Fila atribui IDs 1 / 2 / 3 → Cabeça mais antiga ID 1: ordem FIFO (normal); Chamada FALSE sem inserção → Cabeça mais antiga ID 1: preserva conteúdo (return).</desc>
+<metadata id="diagram-source">{&quot;case_id&quot;:&quot;SEQ-064&quot;,&quot;diagram&quot;:{&quot;nodes&quot;:[{&quot;id&quot;:&quot;a&quot;,&quot;label&quot;:&quot;Evento com ID 900&quot;,&quot;role&quot;:&quot;input&quot;},{&quot;id&quot;:&quot;b&quot;,&quot;label&quot;:&quot;Cada chamada TRUE&quot;,&quot;role&quot;:&quot;process&quot;},{&quot;id&quot;:&quot;c&quot;,&quot;label&quot;:&quot;Fila atribui\nIDs 1 / 2 / 3&quot;,&quot;role&quot;:&quot;output&quot;},{&quot;id&quot;:&quot;d&quot;,&quot;label&quot;:&quot;Cabeça mais antiga\nID 1&quot;,&quot;role&quot;:&quot;output&quot;},{&quot;id&quot;:&quot;e&quot;,&quot;label&quot;:&quot;Chamada FALSE\nsem inserção&quot;,&quot;role&quot;:&quot;state&quot;}],&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;,&quot;label&quot;:&quot;três chamadas&quot;,&quot;kind&quot;:&quot;normal&quot;},{&quot;from&quot;:&quot;b&quot;,&quot;to&quot;:&quot;c&quot;,&quot;label&quot;:&quot;um evento por vez&quot;,&quot;kind&quot;:&quot;normal&quot;},{&quot;from&quot;:&quot;c&quot;,&quot;to&quot;:&quot;d&quot;,&quot;label&quot;:&quot;ordem FIFO&quot;,&quot;kind&quot;:&quot;normal&quot;},{&quot;from&quot;:&quot;e&quot;,&quot;to&quot;:&quot;d&quot;,&quot;label&quot;:&quot;preserva conteúdo&quot;,&quot;kind&quot;:&quot;return&quot;}],&quot;caption&quot;:&quot;xPush é um pedido por chamada; a fila é responsável pelos IDs dos eventos aceitos.&quot;}}</metadata>
+<rect width="1040" height="480" fill="#FFFFFF"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#526779"/></marker></defs>
+<g data-from="a" data-to="b" data-kind="normal"><title>três chamadas</title>
+<path d="M 225.00 86.00 L 225.00 108.33 C 225.00 113.00 227.33 115.33 232.00 115.33 L 413.00 115.33 C 417.67 115.33 420.00 117.67 420.00 122.33 L 420.00 144.67" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="420.00,144.67 415.00,133.67 425.00,133.67" fill="#526779"/></g>
+<g data-from="b" data-to="c" data-kind="normal"><title>um evento por vez</title>
+<path d="M 420.00 210.67 L 420.00 269.33" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="420.00,269.33 415.00,258.33 425.00,258.33" fill="#526779"/></g>
+<g data-from="c" data-to="d" data-kind="normal"><title>ordem FIFO</title>
+<path d="M 420.00 335.33 L 420.00 394.00" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="420.00,394.00 415.00,383.00 425.00,383.00" fill="#526779"/></g>
+<g data-from="e" data-to="d" data-kind="return"><title>preserva conteúdo</title>
+<polyline points="801.00,53.00 808.00,53.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="813.00,53.00 820.00,53.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="825.00,53.00 832.00,53.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="837.00,53.00 844.00,53.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="849.00,53.00 856.00,53.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="861.00,53.00 868.00,53.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="873.00,53.00 880.00,53.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="885.00,53.00 892.00,53.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="897.00,53.00 904.00,53.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="909.00,53.00 916.00,53.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="921.00,53.00 928.00,53.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="933.00,53.00 940.00,53.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="945.00,53.00 952.00,53.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="957.00,53.00 964.00,53.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="969.00,53.00 976.00,53.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="981.00,53.00 988.00,53.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="993.00,53.00 999.00,53.00 1000.00,53.07" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1004.45,55.01 1005.02,55.73 1005.56,56.94 1005.89,58.36 1006.00,60.00 1006.00,61.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,66.66 1006.00,73.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,78.66 1006.00,85.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,90.66 1006.00,97.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,102.66 1006.00,109.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,114.66 1006.00,121.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,126.66 1006.00,133.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,138.66 1006.00,145.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,150.66 1006.00,157.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,162.66 1006.00,169.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,174.66 1006.00,181.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,186.66 1006.00,193.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,198.66 1006.00,205.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,210.66 1006.00,217.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,222.66 1006.00,229.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,234.66 1006.00,241.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,246.66 1006.00,253.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,258.66 1006.00,265.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,270.66 1006.00,277.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,282.66 1006.00,289.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,294.66 1006.00,301.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,306.66 1006.00,313.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,318.66 1006.00,325.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,330.66 1006.00,337.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,342.66 1006.00,349.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,354.66 1006.00,361.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,366.66 1006.00,373.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,378.66 1006.00,385.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,390.66 1006.00,397.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,402.66 1006.00,409.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,414.66 1006.00,420.00 1005.89,421.64 1005.89,421.65" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1003.47,425.85 1003.27,426.02 1002.06,426.56 1000.64,426.89 999.00,427.00 996.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="991.69,427.00 984.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="979.69,427.00 972.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="967.69,427.00 960.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="955.69,427.00 948.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="943.69,427.00 936.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="931.69,427.00 924.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="919.69,427.00 912.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="907.69,427.00 900.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="895.69,427.00 888.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="883.69,427.00 876.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="871.69,427.00 864.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="859.69,427.00 852.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="847.69,427.00 840.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="835.69,427.00 828.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="823.69,427.00 816.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="811.69,427.00 804.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="799.69,427.00 792.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="787.69,427.00 780.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="775.69,427.00 768.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="763.69,427.00 756.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="751.69,427.00 744.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="739.69,427.00 732.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="727.69,427.00 720.69,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="715.69,427.00 710.00,427.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="710.00,427.00 721.00,422.00 721.00,432.00" fill="#526779"/></g>
+<g data-node-id="a" data-role="input"><title>Evento com ID 900</title><rect x="39.00" y="20.00" width="372.00" height="66.00" rx="7" fill="#F4F6F8" stroke="#C0CED8" stroke-width="2"/>
+<text x="225.00" y="60.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Evento com ID 900</text>
+</g>
+<g data-node-id="e" data-role="state"><title>Chamada FALSE
+sem inserção</title><rect x="429.00" y="20.00" width="372.00" height="66.00" rx="7" fill="#EDF1F4" stroke="#526779" stroke-width="2"/>
+<text x="615.00" y="47.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Chamada FALSE</text>
+<text x="615.00" y="73.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">sem inserção</text>
+</g>
+<g data-node-id="b" data-role="process"><title>Cada chamada TRUE</title><rect x="130.00" y="144.67" width="580.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#526779" stroke-width="2"/>
+<text x="420.00" y="185.17" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Cada chamada TRUE</text>
+</g>
+<g data-node-id="c" data-role="output"><title>Fila atribui
+IDs 1 / 2 / 3</title><rect x="130.00" y="269.33" width="580.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#24577A" stroke-width="2"/>
+<text x="420.00" y="296.83" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Fila atribui</text>
+<text x="420.00" y="322.83" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">IDs 1 / 2 / 3</text>
+</g>
+<g data-node-id="d" data-role="output"><title>Cabeça mais antiga
+ID 1</title><rect x="130.00" y="394.00" width="580.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#24577A" stroke-width="2"/>
+<text x="420.00" y="421.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Cabeça mais antiga</text>
+<text x="420.00" y="447.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">ID 1</text>
+</g>
+<g data-edge-label="0"><rect x="254.20" y="86.33" width="136.60" height="25.00" rx="3" fill="#FFFFFF"/><text x="322.50" y="105.33" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">três chamadas</text></g>
+<g data-edge-label="1"><rect x="430.00" y="227.50" width="168.29" height="25.00" rx="3" fill="#FFFFFF"/><text x="514.15" y="246.50" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">um evento por vez</text></g>
+<g data-edge-label="2"><rect x="430.00" y="352.17" width="114.41" height="25.00" rx="3" fill="#FFFFFF"/><text x="487.20" y="371.17" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">ordem FIFO</text></g>
+<g data-edge-label="3"><rect x="826.64" y="227.50" width="169.36" height="25.00" rx="3" fill="#FFFFFF"/><text x="911.32" y="246.50" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">preserva conteúdo</text></g>
+</svg>

@@ -1,1 +1,92 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="480" viewBox="0 0 1040 480" role="img" aria-labelledby="seq-061-title seq-061-desc"><title id="seq-061-title">SEQ-061</title><desc id="seq-061-desc">Sessão rejeitada não consome a numeração da sessão válida.</desc><defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#536679"/></marker><marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#24577A"/></marker><marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#24577A"/></marker></defs><rect width="1040" height="480" fill="#ffffff"/><path d="M 284,112.0 L 302.0,112.0 Q 308,112.0 308.0,106.0 L 308.0,106.0 Q 308,100.0 314.0,100.0 L 388,100.0" fill="none" stroke="#536679" stroke-width="2"/><polygon points="388,100.0 378.0,95.0 378.0,105.0" fill="#536679"/><path d="M 652,112.0 L 756,112.0" fill="none" stroke="#536679" stroke-width="2"/><polygon points="756,112.0 746.0,107.0 746.0,117.0" fill="#536679"/><path d="M 532.0,160 L 532.0,166.0 Q 532.0,172 526.0,172.0 L 522.0,172.0 Q 514.0,172 514.0,180.0 L 514.0,328" fill="none" stroke="#536679" stroke-width="2" stroke-dasharray="6,5"/><polygon points="514.0,328 519.0,318.0 509.0,318.0" fill="#536679"/><path d="M 388,382.0 L 311.0,382.0 Q 308,382.0 308.0,379.0 L 308.0,379.0 Q 308,376.0 305.0,376.0 L 284,376.0" fill="none" stroke="#24577A" stroke-width="2" stroke-dasharray="6,5"/><polygon points="284,376.0 294.0,381.0 294.0,371.0" fill="#24577A"/><rect x="20" y="64" width="264" height="96" rx="4" fill="#F4F6F8" stroke="#CBD4DC" stroke-width="2"/><text x="152.0" y="119.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Sessão recebida</text><rect x="388" y="64" width="264" height="96" rx="4" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="520.0" y="119.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Confere sessão</text><rect x="756" y="64" width="264" height="96" rx="8" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="888.0" y="107.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Sessão correta</text><text x="888.0" y="131.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">verifica RequestID</text><rect x="388" y="328" width="264" height="96" rx="8" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="520.0" y="371.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Sessão incorreta</text><text x="520.0" y="395.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">marca preservada</text><rect x="20" y="328" width="264" height="96" rx="8" fill="#EDF1F4" stroke="#536679" stroke-width="2"/><text x="152.0" y="371.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Próximo ID válido</text><text x="152.0" y="395.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">pode entrar</text><rect x="290.7421875" y="70.0" width="82.515625" height="20" fill="#ffffff"/><text x="332.0" y="85.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">compara</text><rect x="664.79296875" y="82.0" width="78.4140625" height="20" fill="#ffffff"/><text x="704.0" y="97.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">coincide</text><rect x="429.50390625" y="240.0" width="72.4921875" height="20" fill="#ffffff"/><text x="465.75" y="255.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">diverge</text><rect x="289.05859375" y="332.0" width="85.8828125" height="40" fill="#ffffff"/><text x="332.0" y="347.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">retorno à</text><text x="332.0" y="367.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">sessão</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 480" width="1040" height="480" role="img" aria-labelledby="title-SEQ-061 desc-SEQ-061">
+<title id="title-SEQ-061">SEQ-061 — Sessão rejeitada não consome a numeração da sessão válida.</title>
+<desc id="desc-SEQ-061">Nós: a: Sessão recebida; b: Confere sessão; c: Sessão correta verifica RequestID; d: Sessão incorreta marca preservada; e: Próximo ID válido pode entrar. Relações: Sessão recebida → Confere sessão: compara (normal); Confere sessão → Sessão correta verifica RequestID: coincide (normal); Confere sessão → Sessão incorreta marca preservada: diverge (reject); Sessão incorreta marca preservada → Próximo ID válido pode entrar: retorno à sessão (return).</desc>
+<metadata id="diagram-source">{&quot;case_id&quot;:&quot;SEQ-061&quot;,&quot;diagram&quot;:{&quot;nodes&quot;:[{&quot;id&quot;:&quot;a&quot;,&quot;label&quot;:&quot;Sessão recebida&quot;,&quot;role&quot;:&quot;input&quot;},{&quot;id&quot;:&quot;b&quot;,&quot;label&quot;:&quot;Confere sessão&quot;,&quot;role&quot;:&quot;process&quot;},{&quot;id&quot;:&quot;c&quot;,&quot;label&quot;:&quot;Sessão correta\nverifica RequestID&quot;,&quot;role&quot;:&quot;output&quot;},{&quot;id&quot;:&quot;d&quot;,&quot;label&quot;:&quot;Sessão incorreta\nmarca preservada&quot;,&quot;role&quot;:&quot;output&quot;},{&quot;id&quot;:&quot;e&quot;,&quot;label&quot;:&quot;Próximo ID válido\npode entrar&quot;,&quot;role&quot;:&quot;state&quot;}],&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;,&quot;label&quot;:&quot;compara&quot;,&quot;kind&quot;:&quot;normal&quot;},{&quot;from&quot;:&quot;b&quot;,&quot;to&quot;:&quot;c&quot;,&quot;label&quot;:&quot;coincide&quot;,&quot;kind&quot;:&quot;normal&quot;},{&quot;from&quot;:&quot;b&quot;,&quot;to&quot;:&quot;d&quot;,&quot;label&quot;:&quot;diverge&quot;,&quot;kind&quot;:&quot;reject&quot;},{&quot;from&quot;:&quot;d&quot;,&quot;to&quot;:&quot;e&quot;,&quot;label&quot;:&quot;retorno à sessão&quot;,&quot;kind&quot;:&quot;return&quot;}],&quot;caption&quot;:&quot;Sessão rejeitada não consome a numeração da sessão válida.&quot;}}</metadata>
+<rect width="1040" height="480" fill="#FFFFFF"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#526779"/></marker></defs>
+<g data-from="a" data-to="b" data-kind="normal"><title>compara</title>
+<path d="M 520.00 86.00 L 520.00 144.67" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="520.00,144.67 515.00,133.67 525.00,133.67" fill="#526779"/></g>
+<g data-from="b" data-to="c" data-kind="normal"><title>coincide</title>
+<path d="M 502.00 210.67 L 502.00 233.00 C 502.00 237.67 499.67 240.00 495.00 240.00 L 277.00 240.00 C 272.33 240.00 270.00 242.33 270.00 247.00 L 270.00 269.33" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="270.00,269.33 265.00,258.33 275.00,258.33" fill="#526779"/></g>
+<g data-from="b" data-to="d" data-kind="reject"><title>diverge</title>
+<polyline points="538.00,210.67 538.00,217.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="538.00,222.67 538.00,229.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="538.11,234.66 538.44,236.06 538.98,237.27 539.75,238.25 540.73,239.02 541.94,239.56 542.35,239.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="547.32,240.00 554.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="559.32,240.00 566.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="571.32,240.00 578.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="583.32,240.00 590.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="595.32,240.00 602.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="607.32,240.00 614.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="619.32,240.00 626.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="631.32,240.00 638.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="643.32,240.00 650.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="655.32,240.00 662.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="667.32,240.00 674.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="679.32,240.00 686.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="691.32,240.00 698.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="703.32,240.00 710.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="715.32,240.00 722.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="727.32,240.00 734.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="739.32,240.00 746.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="751.32,240.00 758.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="763.32,240.02 764.64,240.11 766.06,240.44 767.27,240.98 768.25,241.75 769.02,242.73 769.18,243.10" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="770.00,247.98 770.00,254.98" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="770.00,259.98 770.00,266.98" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="770.00,269.33 765.00,258.33 775.00,258.33" fill="#526779"/></g>
+<g data-from="d" data-to="e" data-kind="return"><title>retorno à sessão</title>
+<polyline points="770.00,335.33 770.00,342.33" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="770.00,347.33 770.00,354.33" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="769.89,359.33 769.56,360.73 769.02,361.93 768.25,362.92 767.27,363.68 766.06,364.23 765.65,364.32" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="760.68,364.67 753.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="748.68,364.67 741.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="736.68,364.67 729.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="724.68,364.67 717.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="712.68,364.67 705.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="700.68,364.67 693.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="688.68,364.67 681.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="676.68,364.67 669.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="664.68,364.67 657.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="652.68,364.67 645.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="640.68,364.67 633.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="628.68,364.67 621.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="616.68,364.67 609.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="604.68,364.67 597.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="592.68,364.67 585.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="580.68,364.67 573.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="568.68,364.67 561.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="556.68,364.67 549.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="544.68,364.67 537.68,364.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="532.68,364.67 527.00,364.67 525.68,364.75" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="521.35,366.93 520.98,367.40 520.44,368.60 520.11,370.03 520.00,371.67 520.00,373.64" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="520.00,378.64 520.00,385.64" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="520.00,390.64 520.00,394.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="520.00,394.00 515.00,383.00 525.00,383.00" fill="#526779"/></g>
+<g data-node-id="a" data-role="input"><title>Sessão recebida</title><rect x="230.00" y="20.00" width="580.00" height="66.00" rx="7" fill="#F4F6F8" stroke="#C0CED8" stroke-width="2"/>
+<text x="520.00" y="60.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Sessão recebida</text>
+</g>
+<g data-node-id="b" data-role="process"><title>Confere sessão</title><rect x="230.00" y="144.67" width="580.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#526779" stroke-width="2"/>
+<text x="520.00" y="185.17" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Confere sessão</text>
+</g>
+<g data-node-id="c" data-role="output"><title>Sessão correta
+verifica RequestID</title><rect x="29.00" y="269.33" width="482.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#24577A" stroke-width="2"/>
+<text x="270.00" y="296.83" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Sessão correta</text>
+<text x="270.00" y="322.83" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">verifica RequestID</text>
+</g>
+<g data-node-id="d" data-role="output"><title>Sessão incorreta
+marca preservada</title><rect x="529.00" y="269.33" width="482.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#24577A" stroke-width="2"/>
+<text x="770.00" y="296.83" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Sessão incorreta</text>
+<text x="770.00" y="322.83" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">marca preservada</text>
+</g>
+<g data-node-id="e" data-role="state"><title>Próximo ID válido
+pode entrar</title><rect x="230.00" y="394.00" width="580.00" height="66.00" rx="7" fill="#EDF1F4" stroke="#526779" stroke-width="2"/>
+<text x="520.00" y="421.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Próximo ID válido</text>
+<text x="520.00" y="447.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">pode entrar</text>
+</g>
+<g data-edge-label="0"><rect x="530.00" y="102.83" width="85.91" height="25.00" rx="3" fill="#FFFFFF"/><text x="572.95" y="121.83" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">compara</text></g>
+<g data-edge-label="1"><rect x="345.15" y="211.00" width="81.69" height="25.00" rx="3" fill="#FFFFFF"/><text x="386.00" y="230.00" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">coincide</text></g>
+<g data-edge-label="2"><rect x="616.85" y="211.00" width="74.30" height="25.00" rx="3" fill="#FFFFFF"/><text x="654.00" y="230.00" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">diverge</text></g>
+<g data-edge-label="3"><rect x="568.24" y="335.67" width="153.51" height="25.00" rx="3" fill="#FFFFFF"/><text x="645.00" y="354.67" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">retorno à sessão</text></g>
+</svg>

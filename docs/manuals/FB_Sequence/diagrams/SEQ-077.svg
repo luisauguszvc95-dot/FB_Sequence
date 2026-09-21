@@ -1,1 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="480" viewBox="0 0 1040 480" role="img" aria-labelledby="seq-077-title seq-077-desc"><title id="seq-077-title">SEQ-077</title><desc id="seq-077-desc">Faulted não encerra o lote; a recuperação conserva o motivo e o lote que existiam antes do reset.</desc><defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#536679"/></marker><marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#24577A"/></marker><marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#24577A"/></marker></defs><rect width="1040" height="480" fill="#ffffff"/><path d="M 284,112.0 L 298.0,112.0 Q 304,112.0 304.0,106.0 L 304.0,106.0 Q 304,100.0 310.0,100.0 L 388,100.0" fill="none" stroke="#536679" stroke-width="2"/><polygon points="388,100.0 378.0,95.0 378.0,105.0" fill="#536679"/><path d="M 652,112.0 L 664.0,112.0 Q 672,112.0 672.0,120.0 L 672.0,164.0 Q 672,172 680.0,172.0 L 728.0,172.0 Q 736,172 736.0,164.0 L 736.0,120.0 Q 736,112.0 744.0,112.0 L 756,112.0" fill="none" stroke="#536679" stroke-width="2"/><polygon points="756,112.0 746.0,107.0 746.0,117.0" fill="#536679"/><path d="M 532.0,160 L 532.0,166.0 Q 532.0,172 526.0,172.0 L 522.0,172.0 Q 514.0,172 514.0,180.0 L 514.0,328" fill="none" stroke="#24577A" stroke-width="2" stroke-dasharray="6,5"/><polygon points="514.0,328 519.0,318.0 509.0,318.0" fill="#24577A"/><path d="M 652,382.0 L 673.0,382.0 Q 676,382.0 676.0,379.0 L 676.0,379.0 Q 676,376.0 679.0,376.0 L 756,376.0" fill="none" stroke="#536679" stroke-width="2"/><polygon points="756,376.0 746.0,371.0 746.0,381.0" fill="#536679"/><rect x="20" y="64" width="264" height="96" rx="4" fill="#F4F6F8" stroke="#CBD4DC" stroke-width="2"/><text x="152.0" y="119.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Running</text><rect x="388" y="64" width="264" height="96" rx="4" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="520.0" y="107.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Faulted</text><text x="520.0" y="131.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">ResourceLost</text><rect x="756" y="64" width="264" height="96" rx="8" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="888.0" y="107.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">FaultRaised</text><text x="888.0" y="131.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">sem BatchFinished</text><rect x="388" y="328" width="264" height="96" rx="8" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="520.0" y="383.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Reset para Idle</text><rect x="756" y="328" width="264" height="96" rx="8" fill="#EDF1F4" stroke="#536679" stroke-width="2"/><text x="888.0" y="371.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">FaultCleared</text><text x="888.0" y="395.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">causa e lote antes</text><rect x="320.0859375" y="70.0" width="51.828125" height="20" fill="#ffffff"/><text x="346.0" y="85.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">falha</text><rect x="622.16796875" y="184.0" width="163.6640625" height="20" fill="#ffffff"/><text x="704.0" y="199.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">registra ocorrência</text><rect x="389.86359375" y="240.0" width="112.1328125" height="20" fill="#ffffff"/><text x="445.93" y="255.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">recuperação</text><rect x="658.6953125" y="326.0" width="82.609375" height="40" fill="#ffffff"/><text x="700.0" y="341.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">preserva</text><text x="700.0" y="361.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">contexto</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 480" width="1040" height="480" role="img" aria-labelledby="title-SEQ-077 desc-SEQ-077">
+<title id="title-SEQ-077">SEQ-077 — Faulted não encerra o lote; a recuperação conserva o motivo e o lote que existiam antes do reset.</title>
+<desc id="desc-SEQ-077">Nós: a: Running; b: Faulted ResourceLost; c: FaultRaised sem BatchFinished; d: Reset para Idle; e: FaultCleared causa e lote antes. Relações: Running → Faulted ResourceLost: falha (normal); Faulted ResourceLost → FaultRaised sem BatchFinished: registra ocorrência (normal); Faulted ResourceLost → Reset para Idle: recuperação (return); Reset para Idle → FaultCleared causa e lote antes: preserva contexto (normal).</desc>
+<metadata id="diagram-source">{&quot;case_id&quot;:&quot;SEQ-077&quot;,&quot;diagram&quot;:{&quot;nodes&quot;:[{&quot;id&quot;:&quot;a&quot;,&quot;label&quot;:&quot;Running&quot;,&quot;role&quot;:&quot;input&quot;},{&quot;id&quot;:&quot;b&quot;,&quot;label&quot;:&quot;Faulted\nResourceLost&quot;,&quot;role&quot;:&quot;process&quot;},{&quot;id&quot;:&quot;c&quot;,&quot;label&quot;:&quot;FaultRaised\nsem BatchFinished&quot;,&quot;role&quot;:&quot;output&quot;},{&quot;id&quot;:&quot;d&quot;,&quot;label&quot;:&quot;Reset para Idle&quot;,&quot;role&quot;:&quot;output&quot;},{&quot;id&quot;:&quot;e&quot;,&quot;label&quot;:&quot;FaultCleared\ncausa e lote antes&quot;,&quot;role&quot;:&quot;state&quot;}],&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;,&quot;label&quot;:&quot;falha&quot;,&quot;kind&quot;:&quot;normal&quot;},{&quot;from&quot;:&quot;b&quot;,&quot;to&quot;:&quot;c&quot;,&quot;label&quot;:&quot;registra ocorrência&quot;,&quot;kind&quot;:&quot;normal&quot;},{&quot;from&quot;:&quot;b&quot;,&quot;to&quot;:&quot;d&quot;,&quot;label&quot;:&quot;recuperação&quot;,&quot;kind&quot;:&quot;return&quot;},{&quot;from&quot;:&quot;d&quot;,&quot;to&quot;:&quot;e&quot;,&quot;label&quot;:&quot;preserva contexto&quot;,&quot;kind&quot;:&quot;normal&quot;}],&quot;caption&quot;:&quot;Faulted não encerra o lote; a recuperação conserva o motivo e o lote que existiam antes do reset.&quot;}}</metadata>
+<rect width="1040" height="480" fill="#FFFFFF"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#526779"/></marker></defs>
+<g data-from="a" data-to="b" data-kind="normal"><title>falha</title>
+<path d="M 520.00 86.00 L 520.00 144.67" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="520.00,144.67 515.00,133.67 525.00,133.67" fill="#526779"/></g>
+<g data-from="b" data-to="c" data-kind="normal"><title>registra ocorrência</title>
+<path d="M 502.00 210.67 L 502.00 233.00 C 502.00 237.67 499.67 240.00 495.00 240.00 L 277.00 240.00 C 272.33 240.00 270.00 242.33 270.00 247.00 L 270.00 269.33" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="270.00,269.33 265.00,258.33 275.00,258.33" fill="#526779"/></g>
+<g data-from="b" data-to="d" data-kind="return"><title>recuperação</title>
+<polyline points="538.00,210.67 538.00,217.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="538.00,222.67 538.00,229.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="538.11,234.66 538.44,236.06 538.98,237.27 539.75,238.25 540.73,239.02 541.94,239.56 542.35,239.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="547.32,240.00 554.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="559.32,240.00 566.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="571.32,240.00 578.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="583.32,240.00 590.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="595.32,240.00 602.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="607.32,240.00 614.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="619.32,240.00 626.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="631.32,240.00 638.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="643.32,240.00 650.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="655.32,240.00 662.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="667.32,240.00 674.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="679.32,240.00 686.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="691.32,240.00 698.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="703.32,240.00 710.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="715.32,240.00 722.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="727.32,240.00 734.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="739.32,240.00 746.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="751.32,240.00 758.32,240.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="763.32,240.02 764.64,240.11 766.06,240.44 767.27,240.98 768.25,241.75 769.02,242.73 769.18,243.10" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="770.00,247.98 770.00,254.98" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="770.00,259.98 770.00,266.98" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="770.00,269.33 765.00,258.33 775.00,258.33" fill="#526779"/></g>
+<g data-from="d" data-to="e" data-kind="normal"><title>preserva contexto</title>
+<path d="M 770.00 335.33 L 770.00 357.67 C 770.00 362.33 767.67 364.67 763.00 364.67 L 527.00 364.67 C 522.33 364.67 520.00 367.00 520.00 371.67 L 520.00 394.00" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="520.00,394.00 515.00,383.00 525.00,383.00" fill="#526779"/></g>
+<g data-node-id="a" data-role="input"><title>Running</title><rect x="230.00" y="20.00" width="580.00" height="66.00" rx="7" fill="#F4F6F8" stroke="#C0CED8" stroke-width="2"/>
+<text x="520.00" y="60.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Running</text>
+</g>
+<g data-node-id="b" data-role="process"><title>Faulted
+ResourceLost</title><rect x="230.00" y="144.67" width="580.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#526779" stroke-width="2"/>
+<text x="520.00" y="172.17" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Faulted</text>
+<text x="520.00" y="198.17" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">ResourceLost</text>
+</g>
+<g data-node-id="c" data-role="output"><title>FaultRaised
+sem BatchFinished</title><rect x="29.00" y="269.33" width="482.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#24577A" stroke-width="2"/>
+<text x="270.00" y="296.83" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">FaultRaised</text>
+<text x="270.00" y="322.83" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">sem BatchFinished</text>
+</g>
+<g data-node-id="d" data-role="output"><title>Reset para Idle</title><rect x="529.00" y="269.33" width="482.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#24577A" stroke-width="2"/>
+<text x="770.00" y="309.83" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Reset para Idle</text>
+</g>
+<g data-node-id="e" data-role="state"><title>FaultCleared
+causa e lote antes</title><rect x="230.00" y="394.00" width="580.00" height="66.00" rx="7" fill="#EDF1F4" stroke="#526779" stroke-width="2"/>
+<text x="520.00" y="421.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">FaultCleared</text>
+<text x="520.00" y="447.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">causa e lote antes</text>
+</g>
+<g data-edge-label="0"><rect x="530.00" y="102.83" width="53.19" height="25.00" rx="3" fill="#FFFFFF"/><text x="556.60" y="121.83" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">falha</text></g>
+<g data-edge-label="1"><rect x="301.34" y="211.00" width="169.32" height="25.00" rx="3" fill="#FFFFFF"/><text x="386.00" y="230.00" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">registra ocorrência</text></g>
+<g data-edge-label="2"><rect x="595.20" y="211.00" width="117.60" height="25.00" rx="3" fill="#FFFFFF"/><text x="654.00" y="230.00" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">recuperação</text></g>
+<g data-edge-label="3"><rect x="563.49" y="335.67" width="163.01" height="25.00" rx="3" fill="#FFFFFF"/><text x="645.00" y="354.67" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">preserva contexto</text></g>
+</svg>

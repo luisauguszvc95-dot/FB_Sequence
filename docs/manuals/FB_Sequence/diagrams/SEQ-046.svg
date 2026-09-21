@@ -1,1 +1,63 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="480" viewBox="0 0 1040 480" role="img" aria-labelledby="seq-046-title seq-046-desc"><title id="seq-046-title">SEQ-046</title><desc id="seq-046-desc">A mesma instância deve rejeitar o defeito e reconhecer a correção na chamada seguinte.</desc><defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#536679"/></marker><marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#24577A"/></marker><marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#24577A"/></marker></defs><rect width="1040" height="480" fill="#ffffff"/><path d="M 410,112.0 L 424.0,112.0 Q 430,112.0 430.0,106.0 L 430.0,106.0 Q 430,100.0 436.0,100.0 L 630,100.0" fill="none" stroke="#536679" stroke-width="2"/><polygon points="630,100.0 620.0,95.0 620.0,105.0" fill="#536679"/><path d="M 630,112.0 L 618.0,112.0 Q 610,112.0 610.0,120.0 L 610.0,368.0 Q 610,376.0 602.0,376.0 L 410,376.0" fill="none" stroke="#536679" stroke-width="2"/><polygon points="410,376.0 420.0,381.0 420.0,371.0" fill="#536679"/><path d="M 817.0,160 L 817.0,166.0 Q 817.0,172 811.0,172.0 L 811.0,172.0 Q 805.0,172 805.0,178.0 L 805.0,328" fill="none" stroke="#536679" stroke-width="2" stroke-dasharray="6,5"/><polygon points="805.0,328 810.0,318.0 800.0,318.0" fill="#536679"/><rect x="60" y="64" width="350" height="96" rx="4" fill="#F4F6F8" stroke="#CBD4DC" stroke-width="2"/><text x="235.0" y="119.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Receita de teste</text><rect x="630" y="64" width="350" height="96" rx="4" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="805.0" y="107.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Validador</text><text x="805.0" y="131.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">estrutural</text><rect x="60" y="328" width="350" height="96" rx="8" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="235.0" y="371.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Válida</text><text x="235.0" y="395.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">None / índice 0</text><rect x="630" y="328" width="350" height="96" rx="8" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="805.0" y="371.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Duplicada</text><text x="805.0" y="395.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">índice 2</text><rect x="461.83203125" y="70.0" width="136.3359375" height="20" fill="#ffffff"/><text x="530.0" y="85.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">receita enviada</text><rect x="427.90312500000005" y="234.0" width="170.09375" height="20" fill="#ffffff"/><text x="512.95" y="249.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">íntegra ou corrigida</text><rect x="691.78453125" y="240.0" width="101.2109375" height="20" fill="#ffffff"/><text x="742.39" y="255.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">ID repetido</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 480" width="1040" height="480" role="img" aria-labelledby="title-SEQ-046 desc-SEQ-046">
+<title id="title-SEQ-046">SEQ-046 — A mesma instância deve rejeitar o defeito e reconhecer a correção na chamada seguinte.</title>
+<desc id="desc-SEQ-046">Nós: a: Receita de teste; b: Validador estrutural; c: Válida None / índice 0; d: Duplicada índice 2. Relações: Receita de teste → Validador estrutural: receita enviada (normal); Validador estrutural → Válida None / índice 0: íntegra ou corrigida (normal); Validador estrutural → Duplicada índice 2: ID repetido (reject).</desc>
+<metadata id="diagram-source">{&quot;case_id&quot;:&quot;SEQ-046&quot;,&quot;diagram&quot;:{&quot;nodes&quot;:[{&quot;id&quot;:&quot;a&quot;,&quot;label&quot;:&quot;Receita de teste&quot;,&quot;role&quot;:&quot;input&quot;},{&quot;id&quot;:&quot;b&quot;,&quot;label&quot;:&quot;Validador\nestrutural&quot;,&quot;role&quot;:&quot;process&quot;},{&quot;id&quot;:&quot;c&quot;,&quot;label&quot;:&quot;Válida\nNone / índice 0&quot;,&quot;role&quot;:&quot;output&quot;},{&quot;id&quot;:&quot;d&quot;,&quot;label&quot;:&quot;Duplicada\níndice 2&quot;,&quot;role&quot;:&quot;output&quot;}],&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;,&quot;label&quot;:&quot;receita enviada&quot;,&quot;kind&quot;:&quot;normal&quot;},{&quot;from&quot;:&quot;b&quot;,&quot;to&quot;:&quot;c&quot;,&quot;label&quot;:&quot;íntegra ou corrigida&quot;,&quot;kind&quot;:&quot;normal&quot;},{&quot;from&quot;:&quot;b&quot;,&quot;to&quot;:&quot;d&quot;,&quot;label&quot;:&quot;ID repetido&quot;,&quot;kind&quot;:&quot;reject&quot;}],&quot;caption&quot;:&quot;A mesma instância deve rejeitar o defeito e reconhecer a correção na chamada seguinte.&quot;}}</metadata>
+<rect width="1040" height="480" fill="#FFFFFF"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#526779"/></marker></defs>
+<g data-from="a" data-to="b" data-kind="normal"><title>receita enviada</title>
+<path d="M 520.00 113.00 L 520.00 207.00" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="520.00,207.00 515.00,196.00 525.00,196.00" fill="#526779"/></g>
+<g data-from="b" data-to="c" data-kind="normal"><title>íntegra ou corrigida</title>
+<path d="M 502.00 273.00 L 502.00 313.00 C 502.00 317.67 499.67 320.00 495.00 320.00 L 277.00 320.00 C 272.33 320.00 270.00 322.33 270.00 327.00 L 270.00 367.00" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="270.00,367.00 265.00,356.00 275.00,356.00" fill="#526779"/></g>
+<g data-from="b" data-to="d" data-kind="reject"><title>ID repetido</title>
+<polyline points="538.00,273.00 538.00,280.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="538.00,285.00 538.00,292.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="538.00,297.00 538.00,304.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="538.00,309.00 538.00,313.00 538.11,314.64 538.41,315.96" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="541.72,319.46 541.94,319.56 543.36,319.89 545.00,320.00 548.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="553.66,320.00 560.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="565.66,320.00 572.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="577.66,320.00 584.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="589.66,320.00 596.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="601.66,320.00 608.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="613.66,320.00 620.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="625.66,320.00 632.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="637.66,320.00 644.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="649.66,320.00 656.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="661.66,320.00 668.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="673.66,320.00 680.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="685.66,320.00 692.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="697.66,320.00 704.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="709.66,320.00 716.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="721.66,320.00 728.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="733.66,320.00 740.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="745.66,320.00 752.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="757.66,320.00 763.00,320.00 764.64,320.11 764.65,320.11" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="768.85,322.53 769.02,322.73 769.56,323.94 769.89,325.36 770.00,327.00 770.00,329.31" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="770.00,334.31 770.00,341.31" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="770.00,346.31 770.00,353.31" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="770.00,358.31 770.00,365.31" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="770.00,367.00 765.00,356.00 775.00,356.00" fill="#526779"/></g>
+<g data-node-id="a" data-role="input"><title>Receita de teste</title><rect x="230.00" y="47.00" width="580.00" height="66.00" rx="7" fill="#F4F6F8" stroke="#C0CED8" stroke-width="2"/>
+<text x="520.00" y="87.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Receita de teste</text>
+</g>
+<g data-node-id="b" data-role="process"><title>Validador
+estrutural</title><rect x="230.00" y="207.00" width="580.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#526779" stroke-width="2"/>
+<text x="520.00" y="234.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Validador</text>
+<text x="520.00" y="260.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">estrutural</text>
+</g>
+<g data-node-id="c" data-role="output"><title>Válida
+None / índice 0</title><rect x="29.00" y="367.00" width="482.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#24577A" stroke-width="2"/>
+<text x="270.00" y="394.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Válida</text>
+<text x="270.00" y="420.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">None / índice 0</text>
+</g>
+<g data-node-id="d" data-role="output"><title>Duplicada
+índice 2</title><rect x="529.00" y="367.00" width="482.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#24577A" stroke-width="2"/>
+<text x="770.00" y="394.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Duplicada</text>
+<text x="770.00" y="420.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">índice 2</text>
+</g>
+<g data-edge-label="0"><rect x="530.00" y="147.50" width="140.84" height="25.00" rx="3" fill="#FFFFFF"/><text x="600.42" y="166.50" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">receita enviada</text></g>
+<g data-edge-label="1"><rect x="280.00" y="331.00" width="175.68" height="25.00" rx="3" fill="#FFFFFF"/><text x="367.84" y="350.00" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">íntegra ou corrigida</text></g>
+<g data-edge-label="2"><rect x="655.07" y="331.00" width="104.93" height="25.00" rx="3" fill="#FFFFFF"/><text x="707.54" y="350.00" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">ID repetido</text></g>
+</svg>

@@ -121,3 +121,7 @@ O contrato 0.2 prepara rastreabilidade de origem. Persistência, autenticação,
 retenção, reconciliação e integração real ainda exigem evidência própria.
 Não reutilize IDs antigos da IHM sem um mapeamento explícito.
 
+
+## Revisão dos diagramas
+
+Os 80 diagramas do manual atual foram redesenhados para melhorar leitura, setas e ramificações. Consulte a [revisão visual](docs/manuals/FB_Sequence/REVISAO_VISUAL.md) e o [PDF atualizado](docs/manuals/FB_Sequence/manual.pdf).

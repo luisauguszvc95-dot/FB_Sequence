@@ -1,1 +1,104 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="480" viewBox="0 0 1040 480" role="img" aria-labelledby="seq-044-title seq-044-desc"><title id="seq-044-title">SEQ-044</title><desc id="seq-044-desc">O runtime mostra o presente; a cabeça conserva o tempo declarado para sua ocorrência.</desc><defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#536679"/></marker><marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#24577A"/></marker><marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#24577A"/></marker></defs><rect width="1040" height="480" fill="#ffffff"/><path d="M 235.0,160 L 235.0,169.0 Q 235.0,172 232.0,172.0 L 232.0,172.0 Q 229.0,172 229.0,175.0 L 229.0,328" fill="none" stroke="#536679" stroke-width="2"/><polygon points="229.0,328 234.0,318.0 224.0,318.0" fill="#536679"/><path d="M 410,382.0 L 424.0,382.0 Q 430,382.0 430.0,376.0 L 430.0,376.0 Q 430,370.0 436.0,370.0 L 630,370.0" fill="none" stroke="#536679" stroke-width="2"/><polygon points="630,370.0 620.0,365.0 620.0,375.0" fill="#536679"/><path d="M 805.0,160 L 805.0,169.0 Q 805.0,172 808.0,172.0 L 808.0,172.0 Q 811.0,172 811.0,175.0 L 811.0,328" fill="none" stroke="#536679" stroke-width="2" stroke-dasharray="6,5"/><polygon points="811.0,328 816.0,318.0 806.0,318.0" fill="#536679"/><rect x="60" y="64" width="350" height="96" rx="4" fill="#F4F6F8" stroke="#CBD4DC" stroke-width="2"/><text x="235.0" y="119.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Fato no tick 110</text><rect x="60" y="328" width="350" height="96" rx="4" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="235.0" y="371.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Evento entra</text><text x="235.0" y="395.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">na fila</text><rect x="630" y="64" width="350" height="96" rx="4" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="805.0" y="107.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Relógio atual</text><text x="805.0" y="131.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">é alterado</text><rect x="630" y="328" width="350" height="96" rx="8" fill="#E7EFF5" stroke="#24577A" stroke-width="2"/><text x="805.0" y="371.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Evento conserva</text><text x="805.0" y="395.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">tempo original</text><rect x="64.92093750000001" y="240.0" width="152.078125" height="20" fill="#ffffff"/><text x="140.96" y="255.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">registra snapshot</text><rect x="470.40234375" y="340.0" width="119.1953125" height="20" fill="#ffffff"/><text x="530.0" y="355.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">preserva fato</text><rect x="673.0434375" y="240.0" width="125.953125" height="20" fill="#ffffff"/><text x="736.02" y="255.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">não reescreve</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 480" width="1040" height="480" role="img" aria-labelledby="title-SEQ-044 desc-SEQ-044">
+<title id="title-SEQ-044">SEQ-044 — O runtime mostra o presente; a cabeça conserva o tempo declarado para sua ocorrência.</title>
+<desc id="desc-SEQ-044">Nós: a: Fato no tick 110; b: Evento entra na fila; c: Relógio atual é alterado; d: Evento conserva tempo original. Relações: Fato no tick 110 → Evento entra na fila: registra snapshot (normal); Evento entra na fila → Evento conserva tempo original: preserva fato (normal); Relógio atual é alterado → Evento conserva tempo original: não reescreve (reject).</desc>
+<metadata id="diagram-source">{&quot;case_id&quot;:&quot;SEQ-044&quot;,&quot;diagram&quot;:{&quot;nodes&quot;:[{&quot;id&quot;:&quot;a&quot;,&quot;label&quot;:&quot;Fato no tick 110&quot;,&quot;role&quot;:&quot;input&quot;},{&quot;id&quot;:&quot;b&quot;,&quot;label&quot;:&quot;Evento entra\nna fila&quot;,&quot;role&quot;:&quot;process&quot;},{&quot;id&quot;:&quot;c&quot;,&quot;label&quot;:&quot;Relógio atual\né alterado&quot;,&quot;role&quot;:&quot;process&quot;},{&quot;id&quot;:&quot;d&quot;,&quot;label&quot;:&quot;Evento conserva\ntempo original&quot;,&quot;role&quot;:&quot;focal&quot;}],&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;,&quot;label&quot;:&quot;registra snapshot&quot;,&quot;kind&quot;:&quot;normal&quot;},{&quot;from&quot;:&quot;b&quot;,&quot;to&quot;:&quot;d&quot;,&quot;label&quot;:&quot;preserva fato&quot;,&quot;kind&quot;:&quot;normal&quot;},{&quot;from&quot;:&quot;c&quot;,&quot;to&quot;:&quot;d&quot;,&quot;label&quot;:&quot;não reescreve&quot;,&quot;kind&quot;:&quot;reject&quot;}],&quot;caption&quot;:&quot;O runtime mostra o presente; a cabeça conserva o tempo declarado para sua ocorrência.&quot;}}</metadata>
+<rect width="1040" height="480" fill="#FFFFFF"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#526779"/></marker></defs>
+<g data-from="a" data-to="b" data-kind="normal"><title>registra snapshot</title>
+<path d="M 225.00 113.00 L 225.00 153.00 C 225.00 157.67 227.33 160.00 232.00 160.00 L 413.00 160.00 C 417.67 160.00 420.00 162.33 420.00 167.00 L 420.00 207.00" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="420.00,207.00 415.00,196.00 425.00,196.00" fill="#526779"/></g>
+<g data-from="b" data-to="d" data-kind="normal"><title>preserva fato</title>
+<path d="M 420.00 273.00 L 420.00 367.00" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="420.00,367.00 415.00,356.00 425.00,356.00" fill="#526779"/></g>
+<g data-from="c" data-to="d" data-kind="reject"><title>não reescreve</title>
+<polyline points="801.00,80.00 808.00,80.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="813.00,80.00 820.00,80.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="825.00,80.00 832.00,80.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="837.00,80.00 844.00,80.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="849.00,80.00 856.00,80.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="861.00,80.00 868.00,80.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="873.00,80.00 880.00,80.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="885.00,80.00 892.00,80.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="897.00,80.00 904.00,80.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="909.00,80.00 916.00,80.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="921.00,80.00 928.00,80.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="933.00,80.00 940.00,80.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="945.00,80.00 952.00,80.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="957.00,80.00 964.00,80.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="969.00,80.00 976.00,80.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="981.00,80.00 988.00,80.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="993.00,80.00 999.00,80.00 1000.00,80.07" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1004.45,82.01 1005.02,82.73 1005.56,83.94 1005.89,85.36 1006.00,87.00 1006.00,88.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,93.66 1006.00,100.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,105.66 1006.00,112.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,117.66 1006.00,124.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,129.66 1006.00,136.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,141.66 1006.00,148.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,153.66 1006.00,160.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,165.66 1006.00,172.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,177.66 1006.00,184.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,189.66 1006.00,196.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,201.66 1006.00,208.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,213.66 1006.00,220.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,225.66 1006.00,232.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,237.66 1006.00,244.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,249.66 1006.00,256.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,261.66 1006.00,268.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,273.66 1006.00,280.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,285.66 1006.00,292.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,297.66 1006.00,304.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,309.66 1006.00,316.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,321.66 1006.00,328.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,333.66 1006.00,340.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,345.66 1006.00,352.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,357.66 1006.00,364.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,369.66 1006.00,376.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1006.00,381.66 1006.00,388.66" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="1005.96,393.65 1005.89,394.64 1005.56,396.06 1005.02,397.27 1004.25,398.25 1003.27,399.02 1002.60,399.32" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="997.69,400.00 990.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="985.69,400.00 978.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="973.69,400.00 966.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="961.69,400.00 954.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="949.69,400.00 942.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="937.69,400.00 930.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="925.69,400.00 918.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="913.69,400.00 906.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="901.69,400.00 894.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="889.69,400.00 882.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="877.69,400.00 870.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="865.69,400.00 858.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="853.69,400.00 846.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="841.69,400.00 834.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="829.69,400.00 822.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="817.69,400.00 810.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="805.69,400.00 798.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="793.69,400.00 786.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="781.69,400.00 774.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="769.69,400.00 762.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="757.69,400.00 750.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="745.69,400.00 738.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="733.69,400.00 726.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="721.69,400.00 714.69,400.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="710.00,400.00 721.00,395.00 721.00,405.00" fill="#526779"/></g>
+<g data-node-id="a" data-role="input"><title>Fato no tick 110</title><rect x="39.00" y="47.00" width="372.00" height="66.00" rx="7" fill="#F4F6F8" stroke="#C0CED8" stroke-width="2"/>
+<text x="225.00" y="87.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Fato no tick 110</text>
+</g>
+<g data-node-id="c" data-role="process"><title>Relógio atual
+é alterado</title><rect x="429.00" y="47.00" width="372.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#526779" stroke-width="2"/>
+<text x="615.00" y="74.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Relógio atual</text>
+<text x="615.00" y="100.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">é alterado</text>
+</g>
+<g data-node-id="b" data-role="process"><title>Evento entra
+na fila</title><rect x="130.00" y="207.00" width="580.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#526779" stroke-width="2"/>
+<text x="420.00" y="234.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Evento entra</text>
+<text x="420.00" y="260.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">na fila</text>
+</g>
+<g data-node-id="d" data-role="focal"><title>Evento conserva
+tempo original</title><rect x="130.00" y="367.00" width="580.00" height="66.00" rx="7" fill="#E7EFF5" stroke="#24577A" stroke-width="2"/>
+<text x="420.00" y="394.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Evento conserva</text>
+<text x="420.00" y="420.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">tempo original</text>
+</g>
+<g data-edge-label="0"><rect x="235.00" y="124.00" width="157.73" height="25.00" rx="3" fill="#FFFFFF"/><text x="313.86" y="143.00" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">registra snapshot</text></g>
+<g data-edge-label="1"><rect x="430.00" y="307.50" width="122.88" height="25.00" rx="3" fill="#FFFFFF"/><text x="491.44" y="326.50" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">preserva fato</text></g>
+<g data-edge-label="2"><rect x="863.62" y="227.50" width="132.38" height="25.00" rx="3" fill="#FFFFFF"/><text x="929.81" y="246.50" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">não reescreve</text></g>
+</svg>

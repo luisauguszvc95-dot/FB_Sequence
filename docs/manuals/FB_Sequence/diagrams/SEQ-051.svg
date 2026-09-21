@@ -1,1 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="480" viewBox="0 0 1040 480" role="img" aria-labelledby="seq-051-title seq-051-desc"><title id="seq-051-title">SEQ-051</title><desc id="seq-051-desc">O limite temporal da receita é uma regra estrutural; a execução do núcleo exige outros contratos.</desc><defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#536679"/></marker><marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#24577A"/></marker><marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#24577A"/></marker></defs><rect width="1040" height="480" fill="#ffffff"/><path d="M 410,112.0 L 424.0,112.0 Q 430,112.0 430.0,106.0 L 430.0,106.0 Q 430,100.0 436.0,100.0 L 630,100.0" fill="none" stroke="#536679" stroke-width="2"/><polygon points="630,100.0 620.0,95.0 620.0,105.0" fill="#536679"/><path d="M 630,112.0 L 618.0,112.0 Q 610,112.0 610.0,120.0 L 610.0,368.0 Q 610,376.0 602.0,376.0 L 410,376.0" fill="none" stroke="#536679" stroke-width="2"/><polygon points="410,376.0 420.0,381.0 420.0,371.0" fill="#536679"/><path d="M 817.0,160 L 817.0,166.0 Q 817.0,172 811.0,172.0 L 811.0,172.0 Q 805.0,172 805.0,178.0 L 805.0,328" fill="none" stroke="#536679" stroke-width="2" stroke-dasharray="6,5"/><polygon points="805.0,328 810.0,318.0 800.0,318.0" fill="#536679"/><rect x="60" y="64" width="350" height="96" rx="4" fill="#F4F6F8" stroke="#CBD4DC" stroke-width="2"/><text x="235.0" y="107.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">WaitQualified</text><text x="235.0" y="131.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">meta e timeout</text><rect x="630" y="64" width="350" height="96" rx="4" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="805.0" y="107.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Coerência</text><text x="805.0" y="131.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">da duração</text><rect x="60" y="328" width="350" height="96" rx="8" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="235.0" y="371.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">0 &lt; meta ≤ limite</text><text x="235.0" y="395.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">válida</text><rect x="630" y="328" width="350" height="96" rx="8" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="805.0" y="359.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Meta 0 ou acima</text><text x="805.0" y="383.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">do timeout</text><text x="805.0" y="407.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">rejeitada</text><rect x="456.20703125" y="70.0" width="147.5859375" height="20" fill="#ffffff"/><text x="530.0" y="85.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">compara tempos</text><rect x="491.280625" y="234.0" width="106.71875" height="20" fill="#ffffff"/><text x="544.64" y="249.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">meta válida</text><rect x="667.85578125" y="240.0" width="125.1484375" height="20" fill="#ffffff"/><text x="730.43" y="255.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">zero ou acima</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 480" width="1040" height="480" role="img" aria-labelledby="title-SEQ-051 desc-SEQ-051">
+<title id="title-SEQ-051">SEQ-051 — O limite temporal da receita é uma regra estrutural; a execução do núcleo exige outros contratos.</title>
+<desc id="desc-SEQ-051">Nós: a: WaitQualified meta e timeout; b: Coerência da duração; c: 0 &lt; meta ≤ limite válida; d: Meta 0 ou acima do timeout rejeitada. Relações: WaitQualified meta e timeout → Coerência da duração: compara tempos (normal); Coerência da duração → 0 &lt; meta ≤ limite válida: meta válida (normal); Coerência da duração → Meta 0 ou acima do timeout rejeitada: zero ou acima (reject).</desc>
+<metadata id="diagram-source">{&quot;case_id&quot;:&quot;SEQ-051&quot;,&quot;diagram&quot;:{&quot;nodes&quot;:[{&quot;id&quot;:&quot;a&quot;,&quot;label&quot;:&quot;WaitQualified\nmeta e timeout&quot;,&quot;role&quot;:&quot;input&quot;},{&quot;id&quot;:&quot;b&quot;,&quot;label&quot;:&quot;Coerência\nda duração&quot;,&quot;role&quot;:&quot;process&quot;},{&quot;id&quot;:&quot;c&quot;,&quot;label&quot;:&quot;0 &lt; meta ≤ limite\nválida&quot;,&quot;role&quot;:&quot;output&quot;},{&quot;id&quot;:&quot;d&quot;,&quot;label&quot;:&quot;Meta 0 ou acima\ndo timeout\nrejeitada&quot;,&quot;role&quot;:&quot;output&quot;}],&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;,&quot;label&quot;:&quot;compara tempos&quot;,&quot;kind&quot;:&quot;normal&quot;},{&quot;from&quot;:&quot;b&quot;,&quot;to&quot;:&quot;c&quot;,&quot;label&quot;:&quot;meta válida&quot;,&quot;kind&quot;:&quot;normal&quot;},{&quot;from&quot;:&quot;b&quot;,&quot;to&quot;:&quot;d&quot;,&quot;label&quot;:&quot;zero ou acima&quot;,&quot;kind&quot;:&quot;reject&quot;}],&quot;caption&quot;:&quot;O limite temporal da receita é uma regra estrutural; a execução do núcleo exige outros contratos.&quot;}}</metadata>
+<rect width="1040" height="480" fill="#FFFFFF"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#526779"/></marker></defs>
+<g data-from="a" data-to="b" data-kind="normal"><title>compara tempos</title>
+<path d="M 520.00 100.00 L 520.00 194.00" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="520.00,194.00 515.00,183.00 525.00,183.00" fill="#526779"/></g>
+<g data-from="b" data-to="c" data-kind="normal"><title>meta válida</title>
+<path d="M 502.00 260.00 L 502.00 306.50 C 502.00 311.17 499.67 313.50 495.00 313.50 L 277.00 313.50 C 272.33 313.50 270.00 315.83 270.00 320.50 L 270.00 367.00" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="270.00,367.00 265.00,356.00 275.00,356.00" fill="#526779"/></g>
+<g data-from="b" data-to="d" data-kind="reject"><title>zero ou acima</title>
+<polyline points="538.00,260.00 538.00,267.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="538.00,272.00 538.00,279.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="538.00,284.00 538.00,291.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="538.00,296.00 538.00,300.00 538.11,301.64 538.41,302.96" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="541.72,306.46 541.94,306.56 543.36,306.89 545.00,307.00 548.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="553.66,307.00 560.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="565.66,307.00 572.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="577.66,307.00 584.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="589.66,307.00 596.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="601.66,307.00 608.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="613.66,307.00 620.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="625.66,307.00 632.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="637.66,307.00 644.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="649.66,307.00 656.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="661.66,307.00 668.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="673.66,307.00 680.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="685.66,307.00 692.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="697.66,307.00 704.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="709.66,307.00 716.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="721.66,307.00 728.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="733.66,307.00 740.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="745.66,307.00 752.66,307.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="757.66,307.00 763.00,307.00 764.64,307.11 764.65,307.11" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="768.85,309.53 769.02,309.73 769.56,310.94 769.89,312.36 770.00,314.00 770.00,316.31" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="770.00,321.31 770.00,328.31" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="770.00,333.31 770.00,340.31" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="770.00,345.31 770.00,352.31" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="770.00,354.00 765.00,343.00 775.00,343.00" fill="#526779"/></g>
+<g data-node-id="a" data-role="input"><title>WaitQualified
+meta e timeout</title><rect x="230.00" y="34.00" width="580.00" height="66.00" rx="7" fill="#F4F6F8" stroke="#C0CED8" stroke-width="2"/>
+<text x="520.00" y="61.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">WaitQualified</text>
+<text x="520.00" y="87.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">meta e timeout</text>
+</g>
+<g data-node-id="b" data-role="process"><title>Coerência
+da duração</title><rect x="230.00" y="194.00" width="580.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#526779" stroke-width="2"/>
+<text x="520.00" y="221.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Coerência</text>
+<text x="520.00" y="247.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">da duração</text>
+</g>
+<g data-node-id="c" data-role="output"><title>0 &lt; meta ≤ limite
+válida</title><rect x="29.00" y="367.00" width="482.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#24577A" stroke-width="2"/>
+<text x="270.00" y="394.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">0 &lt; meta ≤ limite</text>
+<text x="270.00" y="420.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">válida</text>
+</g>
+<g data-node-id="d" data-role="output"><title>Meta 0 ou acima
+do timeout
+rejeitada</title><rect x="529.00" y="354.00" width="482.00" height="92.00" rx="7" fill="#FFFFFF" stroke="#24577A" stroke-width="2"/>
+<text x="770.00" y="381.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Meta 0 ou acima</text>
+<text x="770.00" y="407.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">do timeout</text>
+<text x="770.00" y="433.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">rejeitada</text>
+</g>
+<g data-edge-label="0"><rect x="530.00" y="134.50" width="153.49" height="25.00" rx="3" fill="#FFFFFF"/><text x="606.75" y="153.50" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">compara tempos</text></g>
+<g data-edge-label="1"><rect x="280.00" y="327.75" width="109.15" height="25.00" rx="3" fill="#FFFFFF"/><text x="334.57" y="346.75" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">meta válida</text></g>
+<g data-edge-label="2"><rect x="628.68" y="318.00" width="131.32" height="25.00" rx="3" fill="#FFFFFF"/><text x="694.34" y="337.00" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">zero ou acima</text></g>
+</svg>

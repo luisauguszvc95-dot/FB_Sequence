@@ -1,1 +1,95 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="480" viewBox="0 0 1040 480" role="img" aria-labelledby="seq-052-title seq-052-desc"><title id="seq-052-title">SEQ-052</title><desc id="seq-052-desc">A aprovação desta camada não substitui a verificação de parâmetros pelo adaptador de Control.</desc><defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#536679"/></marker><marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#24577A"/></marker><marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#24577A"/></marker></defs><rect width="1040" height="480" fill="#ffffff"/><path d="M 284,106.0 L 305.0,106.0 Q 308,106.0 308.0,103.0 L 308.0,103.0 Q 308,100.0 311.0,100.0 L 388,100.0" fill="none" stroke="#536679" stroke-width="2"/><polygon points="388,100.0 378.0,95.0 378.0,105.0" fill="#536679"/><path d="M 652,112.0 L 756,112.0" fill="none" stroke="#536679" stroke-width="2"/><polygon points="756,112.0 746.0,107.0 746.0,117.0" fill="#536679"/><path d="M 532.0,160 L 532.0,166.0 Q 532.0,172 526.0,172.0 L 526.0,172.0 Q 520.0,172 520.0,178.0 L 520.0,328" fill="none" stroke="#536679" stroke-width="2" stroke-dasharray="6,5"/><polygon points="520.0,328 525.0,318.0 515.0,318.0" fill="#536679"/><path d="M 158.0,160 L 158.0,169.0 Q 158.0,172 155.0,172.0 L 155.0,172.0 Q 152.0,172 152.0,175.0 L 152.0,328" fill="none" stroke="#536679" stroke-width="2"/><polygon points="152.0,328 157.0,318.0 147.0,318.0" fill="#536679"/><rect x="20" y="64" width="264" height="96" rx="4" fill="#F4F6F8" stroke="#CBD4DC" stroke-width="2"/><text x="152.0" y="107.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Política e</text><text x="152.0" y="131.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">parâmetros</text><rect x="388" y="64" width="264" height="96" rx="4" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="520.0" y="107.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Validador</text><text x="520.0" y="131.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">estrutural</text><rect x="756" y="64" width="264" height="96" rx="8" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="888.0" y="107.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Política suportada</text><text x="888.0" y="131.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">campos válidos</text><rect x="388" y="328" width="264" height="96" rx="8" fill="#ffffff" stroke="#536679" stroke-width="2"/><text x="520.0" y="371.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Política desconhec.</text><text x="520.0" y="395.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">rejeitada</text><rect x="20" y="328" width="264" height="96" rx="8" fill="#EDF1F4" stroke="#536679" stroke-width="2"/><text x="152.0" y="371.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">Adaptador Control</text><text x="152.0" y="395.0" text-anchor="middle" font-family="DejaVuSans" font-size="20" fill="#202A34">valida parâmetros</text><rect x="289.015625" y="70.0" width="85.96875" height="20" fill="#ffffff"/><text x="332.0" y="85.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">estrutura</text><rect x="657.48046875" y="82.0" width="93.0390625" height="20" fill="#ffffff"/><text x="704.0" y="97.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">suportada</text><rect x="380.1403125" y="240.0" width="127.859375" height="20" fill="#ffffff"/><text x="444.07" y="255.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">não suportada</text><rect x="164.0009375" y="240.0" width="141.578125" height="20" fill="#ffffff"/><text x="234.79" y="255.0" text-anchor="middle" font-family="DejaVuSans" font-size="16" fill="#536679">semântica física</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 480" width="1040" height="480" role="img" aria-labelledby="title-SEQ-052 desc-SEQ-052">
+<title id="title-SEQ-052">SEQ-052 — A aprovação desta camada não substitui a verificação de parâmetros pelo adaptador de Control.</title>
+<desc id="desc-SEQ-052">Nós: a: Política e parâmetros; b: Validador estrutural; c: Política suportada campos válidos; d: Política desconhec. rejeitada; e: Adaptador Control valida parâmetros. Relações: Política e parâmetros → Validador estrutural: estrutura (normal); Validador estrutural → Política suportada campos válidos: suportada (normal); Validador estrutural → Política desconhec. rejeitada: não suportada (reject); Política e parâmetros → Adaptador Control valida parâmetros: semântica física (normal).</desc>
+<metadata id="diagram-source">{&quot;case_id&quot;:&quot;SEQ-052&quot;,&quot;diagram&quot;:{&quot;nodes&quot;:[{&quot;id&quot;:&quot;a&quot;,&quot;label&quot;:&quot;Política e\nparâmetros&quot;,&quot;role&quot;:&quot;input&quot;},{&quot;id&quot;:&quot;b&quot;,&quot;label&quot;:&quot;Validador\nestrutural&quot;,&quot;role&quot;:&quot;process&quot;},{&quot;id&quot;:&quot;c&quot;,&quot;label&quot;:&quot;Política suportada\ncampos válidos&quot;,&quot;role&quot;:&quot;output&quot;},{&quot;id&quot;:&quot;d&quot;,&quot;label&quot;:&quot;Política desconhec.\nrejeitada&quot;,&quot;role&quot;:&quot;output&quot;},{&quot;id&quot;:&quot;e&quot;,&quot;label&quot;:&quot;Adaptador Control\nvalida parâmetros&quot;,&quot;role&quot;:&quot;state&quot;}],&quot;edges&quot;:[{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;b&quot;,&quot;label&quot;:&quot;estrutura&quot;,&quot;kind&quot;:&quot;normal&quot;},{&quot;from&quot;:&quot;b&quot;,&quot;to&quot;:&quot;c&quot;,&quot;label&quot;:&quot;suportada&quot;,&quot;kind&quot;:&quot;normal&quot;},{&quot;from&quot;:&quot;b&quot;,&quot;to&quot;:&quot;d&quot;,&quot;label&quot;:&quot;não suportada&quot;,&quot;kind&quot;:&quot;reject&quot;},{&quot;from&quot;:&quot;a&quot;,&quot;to&quot;:&quot;e&quot;,&quot;label&quot;:&quot;semântica física&quot;,&quot;kind&quot;:&quot;normal&quot;}],&quot;caption&quot;:&quot;A aprovação desta camada não substitui a verificação de parâmetros pelo adaptador de Control.&quot;}}</metadata>
+<rect width="1040" height="480" fill="#FFFFFF"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#526779"/></marker></defs>
+<g data-from="a" data-to="b" data-kind="normal"><title>estrutura</title>
+<path d="M 502.00 113.00 L 502.00 153.00 C 502.00 157.67 499.67 160.00 495.00 160.00 L 277.00 160.00 C 272.33 160.00 270.00 162.33 270.00 167.00 L 270.00 207.00" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="270.00,207.00 265.00,196.00 275.00,196.00" fill="#526779"/></g>
+<g data-from="b" data-to="c" data-kind="normal"><title>suportada</title>
+<path d="M 270.00 273.00 L 270.00 367.00" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="270.00,367.00 265.00,356.00 275.00,356.00" fill="#526779"/></g>
+<g data-from="b" data-to="d" data-kind="reject"><title>não suportada</title>
+<polyline points="288.00,273.00 288.00,280.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="288.00,285.00 288.00,292.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="288.00,297.00 288.00,304.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="288.00,309.00 288.00,313.00 288.11,314.64 288.41,315.96" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="291.72,319.46 291.94,319.56 293.36,319.89 295.00,320.00 298.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="303.66,320.00 310.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="315.66,320.00 322.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="327.66,320.00 334.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="339.66,320.00 346.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="351.66,320.00 358.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="363.66,320.00 370.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="375.66,320.00 382.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="387.66,320.00 394.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="399.66,320.00 406.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="411.66,320.00 418.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="423.66,320.00 430.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="435.66,320.00 442.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="447.66,320.00 454.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="459.66,320.00 466.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="471.66,320.00 478.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="483.66,320.00 490.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="495.66,320.00 502.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="507.66,320.00 514.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="519.66,320.00 526.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="531.66,320.00 538.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="543.66,320.00 550.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="555.66,320.00 562.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="567.66,320.00 574.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="579.66,320.00 586.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="591.66,320.00 598.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="603.66,320.00 610.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="615.66,320.00 622.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="627.66,320.00 634.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="639.66,320.00 646.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="651.66,320.00 658.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="663.66,320.00 670.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="675.66,320.00 682.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="687.66,320.00 694.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="699.66,320.00 706.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="711.66,320.00 718.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="723.66,320.00 730.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="735.66,320.00 742.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="747.66,320.00 754.66,320.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="759.66,320.00 763.00,320.00 764.64,320.11 766.06,320.44 766.57,320.67" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="769.66,324.34 769.89,325.36 770.00,327.00 770.00,331.31" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="770.00,336.31 770.00,343.31" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="770.00,348.31 770.00,355.31" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="770.00,360.31 770.00,367.00" fill="none" stroke="#526779" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="770.00,367.00 765.00,356.00 775.00,356.00" fill="#526779"/></g>
+<g data-from="a" data-to="e" data-kind="normal"><title>semântica física</title>
+<path d="M 538.00 113.00 L 538.00 153.00 C 538.00 157.67 540.33 160.00 545.00 160.00 L 763.00 160.00 C 767.67 160.00 770.00 162.33 770.00 167.00 L 770.00 207.00" fill="none" stroke="#526779" stroke-width="2"/>
+<polygon points="770.00,207.00 765.00,196.00 775.00,196.00" fill="#526779"/></g>
+<g data-node-id="a" data-role="input"><title>Política e
+parâmetros</title><rect x="230.00" y="47.00" width="580.00" height="66.00" rx="7" fill="#F4F6F8" stroke="#C0CED8" stroke-width="2"/>
+<text x="520.00" y="74.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Política e</text>
+<text x="520.00" y="100.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">parâmetros</text>
+</g>
+<g data-node-id="b" data-role="process"><title>Validador
+estrutural</title><rect x="29.00" y="207.00" width="482.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#526779" stroke-width="2"/>
+<text x="270.00" y="234.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Validador</text>
+<text x="270.00" y="260.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">estrutural</text>
+</g>
+<g data-node-id="e" data-role="state"><title>Adaptador Control
+valida parâmetros</title><rect x="529.00" y="207.00" width="482.00" height="66.00" rx="7" fill="#EDF1F4" stroke="#526779" stroke-width="2"/>
+<text x="770.00" y="234.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Adaptador Control</text>
+<text x="770.00" y="260.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">valida parâmetros</text>
+</g>
+<g data-node-id="c" data-role="output"><title>Política suportada
+campos válidos</title><rect x="29.00" y="367.00" width="482.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#24577A" stroke-width="2"/>
+<text x="270.00" y="394.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Política suportada</text>
+<text x="270.00" y="420.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">campos válidos</text>
+</g>
+<g data-node-id="d" data-role="output"><title>Política desconhec.
+rejeitada</title><rect x="529.00" y="367.00" width="482.00" height="66.00" rx="7" fill="#FFFFFF" stroke="#24577A" stroke-width="2"/>
+<text x="770.00" y="394.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">Política desconhec.</text>
+<text x="770.00" y="420.50" text-anchor="middle" font-family="Helvetica" font-size="22" fill="#24333F">rejeitada</text>
+</g>
+<g data-edge-label="0"><rect x="280.00" y="171.00" width="86.97" height="25.00" rx="3" fill="#FFFFFF"/><text x="323.49" y="190.00" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">estrutura</text></g>
+<g data-edge-label="1"><rect x="163.51" y="284.00" width="96.49" height="25.00" rx="3" fill="#FFFFFF"/><text x="211.75" y="303.00" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">suportada</text></g>
+<g data-edge-label="2"><rect x="626.53" y="331.00" width="133.47" height="25.00" rx="3" fill="#FFFFFF"/><text x="693.27" y="350.00" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">não suportada</text></g>
+<g data-edge-label="3"><rect x="611.79" y="171.00" width="148.21" height="25.00" rx="3" fill="#FFFFFF"/><text x="685.89" y="190.00" text-anchor="middle" font-family="Helvetica" font-size="19" fill="#526779">semântica física</text></g>
+</svg>
