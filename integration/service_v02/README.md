@@ -1,10 +1,16 @@
 # Optional Sequence 0.2 → Service 2.0 mapper
 
+Current compatibility candidate: [transactional ingress and full-envelope receipt
+gate](PATCH_COMPATIBILITY.md). Exact Service dependency: `service_dependency.json`.
+The historical ingestion gap described below applies to the earlier `b2140a5`
+baseline. The new patch closes cursor-before-insertion loss and adds an explicit
+insertion receipt; full-source transport and native integration remain pending.
+
 Status: **offline integration draft; not connected, not natively compiled, no
 end-to-end audit acceptance claim.** The Sequence and Service demos remain
 independent. Nothing here belongs in the isolated Sequence demo task.
 
-Pinned dependency: [FB_Service `refactor/service-core-v0.2`, `b2140a5`](https://github.com/luisauguszvc95-dot/FB_Service/tree/b2140a5ab4756f1c435ebcf7848270dad2f097d5).
+Earlier dependency: [FB_Service `refactor/service-core-v0.2`, `b2140a5`](https://github.com/luisauguszvc95-dot/FB_Service/tree/b2140a5ab4756f1c435ebcf7848270dad2f097d5).
 The repository version `v0.2` uses Service **wire schema 2.0**. It is not the
 old `main` contract and has no `ST_SVC_SequenceSnapshot` or command dispatcher.
 
@@ -92,9 +98,9 @@ an omitted input can retain its previous value; omission is not revocation.
 Fresh unconfigured instances fail closed. To revoke publication, explicitly
 pass `xEventAvailable := FALSE`; to disable, pass a config with `xEnable=FALSE`.
 
-### Known Service ingestion gap — blocker to automatic connection
+### Historical Service ingestion gap — earlier baseline
 
-At the pinned commit, `FB_SVC_EventCollector` advances its per-slot dedup cursor
+At the earlier `b2140a5` commit, `FB_SVC_EventCollector` advances its per-slot dedup cursor
 before `FB_Service` attempts an outbox push. A full outbox, disabled Service,
 invalid config, or boot mismatch can leave an event marked seen without a
 queued record. `FB_Service` exposes no per-event successful-ingestion ACK.
@@ -139,7 +145,7 @@ alone does not make cross-task STRUCT copying atomic.
 
 Dependency identity check (read-only):
 `python integration/service_v02/verify_service_dependency.py PATH_TO_FB_SERVICE`.
-It checks the nine canonical DUT blob hashes from the pinned commit. A different
+It checks the canonical DUT blob hashes listed in the dependency manifest. A different
 checkout or line endings fails closed and requires review; this is not a
 compiler. The dependency is not vendored in this repository.
 

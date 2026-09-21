@@ -1,5 +1,8 @@
 # FB_Sequence — contrato 0.2 de rastreabilidade
 
+[Patch opcional de compatibilidade v0.2](integration/service_v02/PATCH_COMPATIBILITY.md):
+recibos correlacionados e guarda integral do evento, com validação nativa pendente.
+
 Base em Structured Text para uma Sequence subordinada à autoridade do **Control**.
 Este repositório contém o motor de sequência, seus contratos e demonstrações offline.
 O **Service é desenvolvido em outro repositório**.

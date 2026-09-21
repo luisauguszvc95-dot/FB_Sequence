@@ -1,0 +1,20 @@
+{
+  "schema": "sequence-service-compatibility-verification/1",
+  "date": "2026-09-21",
+  "source_base": "0a3b90aae2673ac2fca71407f850feb599fe7296",
+  "service_dependency": "43e236b6a7e6bf8ae1518226437eb131d77e77e8",
+  "service_pr": "https://github.com/luisauguszvc95-dot/FB_Service/pull/4",
+  "checks": {
+    "core_static_objects": 28,
+    "core_checker_tests": 13,
+    "integration_model_and_sqlite_tests": 34,
+    "dependency_duts": 10
+  },
+  "status": "PASS_OFFLINE",
+  "native_compilation": "NOT_EXECUTED",
+  "native_program": "PRG_SEQ_ReceiptGateTests",
+  "native_expected_checks": 9,
+  "native_result": "PENDING",
+  "full_envelope_plc_transport": "NOT_IMPLEMENTED",
+  "core_source_changes": false
+}

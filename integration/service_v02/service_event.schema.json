@@ -1,0 +1,179 @@
+{
+  "schema": "sequence-service-event-validation/1",
+  "source_repository": "luisauguszvc95-dot/FB_Service",
+  "files": {
+    "src/00_types/ST_SVC_EventInput.st": "fba699346d59c8a68ca1ef6ad2728bce2bc47887",
+    "src/00_types/ST_SVC_SourceHeader.st": "5014ee506b71180216a6f3a004e987493e68265b",
+    "src/00_types/E_SVC_ActorKind.st": "e1a2a2723f4283576a1f11292e94141fef624ab2",
+    "src/00_types/E_SVC_DataQuality.st": "badc979f440ef40b956d873602a667a88a138f5b",
+    "src/00_types/ST_SVC_TimeContext.st": "eae9f1fd6b8cc0da884ff3922ffec0bc7d32324b",
+    "src/00_types/E_SVC_TimeQuality.st": "eec92145c9fdacd89a391d283ea1b221bb647289",
+    "src/00_types/ST_SVC_OperationsContext.st": "2049d7d8765a632754a6daaf53cd9e67aa4e9286",
+    "src/00_types/E_SVC_Domain.st": "8314c7ce34feee39f9a5a8162a4942da146ed688",
+    "src/00_types/E_SVC_EventKind.st": "86a070f8cbb0c8cfc53d3f6fa2b6dfd57d7f5335",
+    "src/00_types/ST_SVC_EventReceipt.st": "4a3f5d32b0c8ef7fe80b8bc0e3af24f82491fa65"
+  },
+  "types": {
+    "ST_SVC_EventInput": {
+      "fields": {
+        "xValid": "BOOL",
+        "stHeader": "ST_SVC_SourceHeader",
+        "stTime": "ST_SVC_TimeContext",
+        "stContext": "ST_SVC_OperationsContext",
+        "eDomain": "E_SVC_Domain",
+        "eKind": "E_SVC_EventKind",
+        "uiObjectID": "UINT",
+        "uiEventCode": "UINT",
+        "uiReasonID": "UINT",
+        "eActorKind": "E_SVC_ActorKind",
+        "udiActorID": "UDINT",
+        "udiCorrelationID": "UDINT",
+        "dwOldState": "DWORD",
+        "dwNewState": "DWORD",
+        "diOldValue": "DINT",
+        "diNewValue": "DINT",
+        "lrValue": "LREAL"
+      }
+    },
+    "ST_SVC_SourceHeader": {
+      "fields": {
+        "xValid": "BOOL",
+        "uiSchemaMajor": "UINT",
+        "uiSchemaMinor": "UINT",
+        "uiSourceID": "UINT",
+        "eProducerKind": "E_SVC_ActorKind",
+        "udiProducerID": "UDINT",
+        "udiSourceEpoch": "UDINT",
+        "udiSourceSeq": "UDINT",
+        "udiTickMs": "UDINT",
+        "eQuality": "E_SVC_DataQuality"
+      }
+    },
+    "E_SVC_ActorKind": {
+      "values": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "E_SVC_DataQuality": {
+      "values": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "ST_SVC_TimeContext": {
+      "fields": {
+        "xValid": "BOOL",
+        "udiTickMs": "UDINT",
+        "udiUtcSeconds": "UDINT",
+        "uiUtcMilliseconds": "UINT",
+        "uiClockSourceID": "UINT",
+        "eQuality": "E_SVC_TimeQuality"
+      }
+    },
+    "E_SVC_TimeQuality": {
+      "values": [
+        0,
+        1,
+        2
+      ]
+    },
+    "ST_SVC_OperationsContext": {
+      "fields": {
+        "udiOperationsRequestID": "UDINT",
+        "udiWorkOrderID": "UDINT",
+        "udiJobOrderID": "UDINT",
+        "udiBatchID": "UDINT",
+        "udiRecipeID": "UDINT",
+        "udiRecipeRevision": "UDINT",
+        "udiProductID": "UDINT",
+        "udiMaterialDefinitionID": "UDINT",
+        "udiMaterialLotID": "UDINT",
+        "udiProductionScheduleID": "UDINT",
+        "udiCampaignID": "UDINT",
+        "uiShiftID": "UINT",
+        "uiCrewID": "UINT",
+        "uiProcessID": "UINT",
+        "uiStepID": "UINT",
+        "uiSegmentID": "UINT",
+        "udiContextRevision": "UDINT"
+      }
+    },
+    "E_SVC_Domain": {
+      "values": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ]
+    },
+    "E_SVC_EventKind": {
+      "values": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    "ST_SVC_EventReceipt": {
+      "fields": {
+        "xValid": "BOOL",
+        "uiMachineID": "UINT",
+        "uiSourceID": "UINT",
+        "uiProcessID": "UINT",
+        "udiSourceEpoch": "UDINT",
+        "udiSourceSeq": "UDINT",
+        "udiBootID": "UDINT",
+        "udiRecordID": "UDINT"
+      }
+    }
+  },
+  "source_commit": "43e236b6a7e6bf8ae1518226437eb131d77e77e8"
+}
