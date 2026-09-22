@@ -60,7 +60,11 @@ def _service_shape(value, kind):
         if type(value) is not int or not -(2**31) <= value < 2**31:
             raise ValueError("invalid DINT")
     elif kind in ("REAL", "LREAL"):
-        if type(value) not in (int, float) or not math.isfinite(value):
+        try:
+            finite = type(value) in (int, float) and math.isfinite(value)
+        except OverflowError:
+            finite = False
+        if not finite:
             raise ValueError(f"invalid {kind}")
     else:
         raise ValueError(f"unsupported field type {kind}")
@@ -144,19 +148,44 @@ def validate(envelope, ingress):
                            "diNewValue": "uiStepID"}.items():
         if projection[target] != source[origin]:
             raise ValueError(f"mismatched projection {target}")
+    # These are the exact optional mapper's mappings, not a generic Service sink.
+    domain_kind = {1: (4, 2), 2: (4, 5), 3: (4, 12), 4: (7, 5),
+                   5: (6, 16), 6: (6, 16), 7: (4, 2), 8: (4, 2),
+                   9: (4, 2), 10: (4, 12), 11: (4, 12), 12: (4, 12),
+                   13: (4, 2), 14: (4, 2), 15: (7, 12)}
+    if (projection["eDomain"], projection["eKind"]) != domain_kind[source["eKind"]]:
+        raise ValueError("event domain/kind differs from the Sequence mapper")
+    if header["eQuality"] != (2 if source["xSyntheticTime"] else 3):
+        raise ValueError("projection quality differs from source time provenance")
+    if projection["uiObjectID"] != source["uiProcessID"]:
+        raise ValueError("projection object differs from source process")
+    # The mapper never manufactures UTC, an authenticated actor or MES context.
+    for field in ("udiUtcSeconds", "uiUtcMilliseconds", "uiClockSourceID", "eQuality"):
+        if projection["stTime"][field] != 0:
+            raise ValueError(f"fabricated source time {field}")
+    for field in ("eActorKind", "udiActorID", "lrValue"):
+        if projection[field] != 0:
+            raise ValueError(f"unexpected mapper field {field}")
+    mapped_context = {"udiBatchID", "udiRecipeID", "udiRecipeRevision", "uiProcessID", "uiStepID"}
+    if any(value != 0 for field, value in context.items() if field not in mapped_context):
+        raise ValueError("unexpected context not owned by the Sequence mapper")
     _canonical(envelope)
 
 
 class EnvelopeStore:
     def __init__(self, path):
         self.connection = sqlite3.connect(path, isolation_level=None)
-        self.connection.execute("PRAGMA synchronous=FULL")
-        self.connection.execute("""CREATE TABLE IF NOT EXISTS sequence_envelopes (
-            source_key TEXT PRIMARY KEY,
-            service_key TEXT UNIQUE NOT NULL,
-            envelope_json TEXT NOT NULL,
-            ingress_json TEXT NOT NULL
-        )""")
+        try:
+            self.connection.execute("PRAGMA synchronous=FULL")
+            self.connection.execute("""CREATE TABLE IF NOT EXISTS sequence_envelopes (
+                source_key TEXT PRIMARY KEY,
+                service_key TEXT UNIQUE NOT NULL,
+                envelope_json TEXT NOT NULL,
+                ingress_json TEXT NOT NULL
+            )""")
+        except BaseException:
+            self.connection.close()
+            raise
 
     def persist(self, envelope, ingress):
         envelope, ingress = deepcopy(envelope), deepcopy(ingress)

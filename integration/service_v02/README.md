@@ -4,11 +4,14 @@ Current compatibility candidate: [transactional ingress and full-envelope receip
 gate](PATCH_COMPATIBILITY.md). Exact Service dependency: `service_dependency.json`.
 The historical ingestion gap described below applies to the earlier `b2140a5`
 baseline. The new patch closes cursor-before-insertion loss and adds an explicit
-insertion receipt; full-source transport and native integration remain pending.
+insertion receipt. [The offline bench](../../docs/BANCADA_OFFLINE.md) implements
+full-source file transport, a local SQLite sink and prepared simulator capture/
+receipt helpers; actual native compilation and simulation remain pending.
 
-Status: **offline integration draft; not connected, not natively compiled, no
-end-to-end audit acceptance claim.** The Sequence and Service demos remain
-independent. Nothing here belongs in the isolated Sequence demo task.
+Status: **offline integration candidate; file/SQLite execution verified, native
+integration not executed.** The original isolated demos remain independent.
+`PRG_SEQ_ServiceBench` is an optional separate composition, with its own instances.
+Nothing here belongs in the original isolated Sequence demo task.
 
 Earlier dependency: [FB_Service `refactor/service-core-v0.2`, `b2140a5`](https://github.com/luisauguszvc95-dot/FB_Service/tree/b2140a5ab4756f1c435ebcf7848270dad2f097d5).
 The repository version `v0.2` uses Service **wire schema 2.0**. It is not the

@@ -1,5 +1,6 @@
 """Real SQLite tests and a protocol oracle; native ST execution is a separate gate."""
 from copy import deepcopy
+from contextlib import closing
 import json
 from pathlib import Path
 import re
@@ -92,7 +93,7 @@ class EnvelopeStoreTests(unittest.TestCase):
 
     def test_receipt_after_real_commit_preserves_every_source_field(self):
         receipt = self.store.persist(self.env, self.ingress)
-        with sqlite3.connect(self.path) as other:
+        with closing(sqlite3.connect(self.path)) as other, other:
             saved = json.loads(other.execute("SELECT envelope_json FROM sequence_envelopes").fetchone()[0])
         self.assertEqual(saved, self.env)
         self.assertEqual(saved["stSourceEvent"]["eCommandResult"], 1)

@@ -1,7 +1,7 @@
 {
   "repository": "luisauguszvc95-dot/FB_Service",
   "branch": "codex/mica-v02-compat-20260921",
-  "commit": "43e236b6a7e6bf8ae1518226437eb131d77e77e8",
+  "commit": "ecf581b0807007d09a9363e0e22f9c523d04f22e",
   "wire_schema": "2.0",
   "source_schema": "0.2",
   "hash_algorithm": "git-blob-sha1",
@@ -17,7 +17,7 @@
     "src/00_types/ST_SVC_EventInput.st": "fba699346d59c8a68ca1ef6ad2728bce2bc47887",
     "src/00_types/ST_SVC_EventReceipt.st": "4a3f5d32b0c8ef7fe80b8bc0e3af24f82491fa65"
   },
-  "previous_commit": "b2140a5ab4756f1c435ebcf7848270dad2f097d5",
+  "previous_commit": "43e236b6a7e6bf8ae1518226437eb131d77e77e8",
   "base_branch": "feat/machine-expert-capture-20260914",
   "base_commit": "c952ac10ea17e1d4aa52483724e2b00e7856d2a9"
 }

@@ -1,8 +1,10 @@
 # Compatibilidade v0.2: inserção, envelope completo e recibo
 
-Candidato offline de 2026-09-21. O núcleo Sequence e os demos isolados continuam
+Candidato offline iniciado em 2026-09-21 e preparado para bancada em 2026-09-22.
+Consulte [o roteiro utilizável](../../docs/BANCADA_OFFLINE.md). O núcleo Sequence e os demos isolados continuam
 com seus contratos de autoridade, comandos, resultados e eventos. As novas peças
 são opcionais e ficam nesta pasta; nenhuma task existente foi conectada.
+O novo `PRG_SEQ_ServiceBench` compõe instâncias próprias para futura SIMULATION.
 
 ## Peças e responsabilidade
 
@@ -12,13 +14,16 @@ são opcionais e ficam nesta pasta; nenhuma task existente foi conectada.
 | `ST_SVC_EventReceipt` do Service corrigido | Confirma inserção da projeção em RAM, por identidade de origem e BootID/RecordID |
 | `ST_SEQ_SVC_SINK_RECEIPT` novo | Vincula o recibo do envelope completo ao registro específico do Service |
 | `FB_SEQ_ServiceReceiptGate` novo | Exige ambas as evidências e a transição de recibo bruto inválido para válido |
-| `envelope_store.py` novo | Sink DEMO local: valida e grava o envelope integral no SQLite antes de retornar o recibo |
+| `envelope_store.py` | Sink DEMO local: valida e grava o envelope integral no SQLite antes de retornar o recibo |
+| `bench_transport.py` | CLI de arquivo completo, persistência, inspeção e recibo correlacionado; demo sintético executável |
+| `machine_expert_bench.py` | Captura completa e retorno exclusivo do recibo do sink, somente em SIMULATION/RUN; API testada com mocks |
+| `PRG_SEQ_ServiceBench` | Composição em uma task com ControlMock, Sequence, Service, mapper e gate; execução nativa pendente |
 
 A dependência exata está em `service_dependency.json`. O schema de validação
 `service_event.schema.json` é metadado derivado dos DUTs canônicos do Service,
 com hashes de origem; não é um segundo conjunto de tipos ST.
 
-## Ordem de composição no projeto offline futuro
+## Ordem usada na composição opcional
 
 1. Chame o mapper com a cabeça pública Sequence, permissão atual e o recibo do
    gate observado no ciclo anterior. Passe todos os inputs explicitamente.
@@ -49,10 +54,13 @@ na mesma task ou pela sincronização nativa da plataforma.
 
 ## Limites concretos
 
-O sink Python recebe objetos locais; não lê PLC, publica MQTT ou escreve ACK no
-Machine Expert. A integração precisa transportar o envelope integral e seu
-recibo por um caminho próprio. A imagem atual de 160 words carrega somente o
-registro genérico Service e não comporta todo `ST_SEQ_EVENT`.
+O sink Python recebe um arquivo completo; não lê PLC, publica MQTT ou escreve
+ACK no Machine Expert. O helper separado de Scripting prepara a captura tipada
+completa e o retorno do recibo a `stSinkReturned`. Verifica SIMULATION/RUN,
+publicação elegível, snapshot estável e readback. A implementação foi testada
+com uma API simulada; a API real e a composição ST não foram executadas aqui.
+A imagem atual de 160 words carrega somente o registro genérico Service e não
+comporta todo `ST_SEQ_EVENT`; permanece inalterada.
 
 O SQLite DEMO usa uma tabela própria e não substitui o historiador Service.
 Identidade repetida com qualquer alteração de conteúdo, mapeamento ou vínculo

@@ -1,5 +1,9 @@
 # FB_Sequence — contrato 0.2 de rastreabilidade
 
+[Começar pela bancada offline](docs/BANCADA_OFFLINE.md): um comando verifica o
+software, outro demonstra arquivo completo → SQLite → recibo correlacionado.
+Inclui composição ST e helpers de captura/retorno para futura SIMULATION.
+
 [Patch opcional de compatibilidade v0.2](integration/service_v02/PATCH_COMPATIBILITY.md):
 recibos correlacionados e guarda integral do evento, com validação nativa pendente.
 
@@ -89,18 +93,22 @@ autoridade, qualificação após Resume e contexto de Reset da base `0480b33`.
 Amplia o schema para 0.2; enums existentes conservam seus valores, mas layouts
 binários antigos não são compatíveis por presunção.
 
-A referência real de Service é a branch `refactor/service-core-v0.2`, commit
-`b2140a5ab4756f1c435ebcf7848270dad2f097d5` (schema de transporte Service **2.0**).
+A referência Service do candidato atual está fixada em
+[`service_dependency.json`](integration/service_v02/service_dependency.json)
+(schema de transporte Service **2.0**). A referência anterior era `b2140a5`
+na branch `refactor/service-core-v0.2`.
 Ela é de observação: não contém o
 dispatcher antigo nem `ST_SVC_SequenceSnapshot`. A projeção opcional em
 `integration/service_v02/` conserva o `ST_SEQ_EVENT` completo ao lado da visão
 genérica parcial `ST_SVC_EventInput`. Sem recibo explícito da posse do envelope
 completo, não há ACK para retirar o evento da Sequence.
 
-O [contrato do adaptador](integration/service_v02/README.md) registra também a
-lacuna de ingestão do Service: observar/deduplicar um evento não demonstra sua
-entrada no outbox. A ligação automática permanece bloqueada até haver retenção
-integral e recibo transacional definidos.
+O [contrato do adaptador](integration/service_v02/README.md) preserva o registro
+da lacuna histórica de ingestão. O candidato Service corrige a inserção e fornece
+recibo correlacionado em RAM; o sink guarda o envelope completo no SQLite antes
+do recibo integral. A [bancada](docs/BANCADA_OFFLINE.md) fornece uma composição ST
+e transporte por arquivos com helpers preparados para o simulador. Compilação,
+captura e retorno de recibo no IDE ainda exigem execução nativa.
 
 **Integração ainda não concluída.** A ordem permanece: Sequence isolada → Service
 isolado → integração dos dois → futuro `FB_Central_Cip_Control`. Hoje é preparação;
@@ -111,15 +119,18 @@ Os quatro Watches existentes são preservados.
 
 ## Verificação local
 
-Python 3, biblioteca padrão:
+Python 3.10 ou superior, biblioteca padrão:
 
 ```bash
-python3 tools/check_sources.py
-python3 -m unittest discover -s tests -p 'test_*.py' -v
-python3 tools/build_bundle.py
+python tools/verify_offline.py
+python integration/service_v02/bench_transport.py demo --output build/demo
+python tools/build_bench_package.py
 ```
 
 O bundle em `build/` é uma conveniência textual; não substitui a compilação no IDE.
+O gerador anterior `tools/build_bundle.py` continua disponível para a ordem de
+importação isolada. A CI prepara verificação Python em Linux e Windows, sem afirmar
+execução nativa de ST.
 O contrato 0.2 prepara rastreabilidade de origem. Persistência, autenticação,
 retenção, reconciliação e integração real ainda exigem evidência própria.
 Não reutilize IDs antigos da IHM sem um mapeamento explícito.

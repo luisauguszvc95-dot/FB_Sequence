@@ -1,5 +1,19 @@
 # Registro de validação — contrato Sequence 0.2
 
+## Candidato de bancada de 2026-09-22
+
+O roteiro atual é [BANCADA_OFFLINE.md](BANCADA_OFFLINE.md). A evidência reproduzível
+é gerada por `python tools/verify_offline.py`; o resumo versionado fica em
+[`integration/service_v02/VERIFICATION.json`](../integration/service_v02/VERIFICATION.json).
+Há transporte integral por arquivos, SQLite real, recibos correlacionados e
+helpers preparados para captura/retorno em SIMULATION. A composição ST e a API
+nativa ainda não foram executadas. O fluxo não escreve ACK de auditoria/transporte.
+
+A matriz histórica abaixo registra a revisão de 11/setembro; suas contagens e
+dependência anterior não substituem o manifesto do candidato atual.
+
+## Registro histórico de 2026-09-11
+
 Data: 2026-09-11. Base: Sequence `0480b33`; dependência opcional:
 Service `b2140a5` (branch `refactor/service-core-v0.2`, schema 2.0).
 

@@ -10,6 +10,7 @@ VAR_OUTPUT
     stReceipt : ST_SEQ_SVC_RECEIPT;
     xEligible : BOOL;
     xRejected : BOOL;
+    xReadyForReceipt : BOOL; // Raw low observed for this eligible, unowned binding.
 END_VAR
 VAR
     stEmpty : ST_SEQ_SVC_RECEIPT;
@@ -103,4 +104,5 @@ ELSE
         xArmed := FALSE;
     END_IF;
 END_IF;
+xReadyForReceipt := xEligible AND xArmed AND NOT xOwned;
 END_FUNCTION_BLOCK
