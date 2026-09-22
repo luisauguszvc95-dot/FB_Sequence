@@ -55,6 +55,7 @@ def main(argv=None):
                     entry["tests"] = int(count[1]); report["tests"] += int(count[1])
                 report["checks"].append(entry)
                 if result.returncode:
+                    print(log, file=sys.stderr)
                     raise ValueError(f"{name} failed; inspect {output / (name + '.log')}")
                 print(f"PASS {name}" + (f" ({entry['tests']} tests)" if "tests" in entry else ""))
             report["file_demo"] = json.loads((Path(temporary) / "demo/report.json").read_text(encoding="utf-8"))

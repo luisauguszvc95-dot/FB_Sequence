@@ -42,5 +42,12 @@
     "independent_review": "receipt concurrency/capture atomicity/numeric overflow findings fixed",
     "sqlite_handles": "explicitly closed for Windows compatibility",
     "ack_channels": "source mapper only; audit/transport separate"
+  },
+  "ci_corrections": {
+    "failed_head": "950e0ddd9fcaf21dd4d49e8a9fe413d6164b26dc",
+    "run_id": 35702023294,
+    "python310": "SQLite authorizer restored with SQLITE_OK callback; COMMIT failure test retained",
+    "windows": "canonical LF checkout enforced; exact enum/source hashes retained",
+    "followup_matrix": "PENDING_REMOTE_RUN"
   }
 }

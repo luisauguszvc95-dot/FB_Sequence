@@ -158,7 +158,9 @@ class EnvelopeStoreTests(unittest.TestCase):
         self.store.connection.set_authorizer(lambda action, arg1, *_:
             sqlite3.SQLITE_DENY if action == sqlite3.SQLITE_TRANSACTION and arg1 == "COMMIT" else sqlite3.SQLITE_OK)
         with self.assertRaises(sqlite3.DatabaseError): self.store.persist(self.env, self.ingress)
-        self.store.connection.set_authorizer(None)
+        # Python 3.10 does not support disabling this callback with None.
+        # Keep the denied-COMMIT injection and explicitly restore allow-all.
+        self.store.connection.set_authorizer(lambda *_: sqlite3.SQLITE_OK)
         self.assertEqual(self.store.connection.execute("SELECT COUNT(*) FROM sequence_envelopes").fetchone()[0], 0)
 
 
