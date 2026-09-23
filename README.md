@@ -64,6 +64,14 @@ O Control precisa conferir a autorização novamente ao consumir cada pedido.
 6. [Inventário](docs/INVENTORY.md): fontes e dependências geradas.
 7. [Roadmap](docs/ROADMAP.md): próximos incrementos sem invadir Service/Control.
 
+## Endurecimento do ciclo e referência ISA
+
+Consulte [ciclo completo](docs/LIFECYCLE.md) e [alinhamento normativo](docs/STANDARDS_ALIGNMENT.md).
+Esta revisão corrige timeout ao entrar em encerramento, correlação de autoridade,
+qualificação após Resume e contexto de Reset. O contrato 0.1 é preservado.
+A ponte executável em ST está em `FB_Service/integrations/sequence`, com teste
+integrado offline e dependências travadas por hashes; execução no IDE continua pendente.
+
 ## Verificação local
 
 Python 3, biblioteca padrão:
