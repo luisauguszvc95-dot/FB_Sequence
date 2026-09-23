@@ -1,0 +1,37 @@
+name: Verify Sequence offline
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.10', '3.12']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Verify source and file transport
+        run: python tools/verify_offline.py
+      - name: Build source-only bench package
+        run: python tools/build_bench_package.py
+      - name: Retain offline evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sequence-offline-${{ matrix.os }}-py${{ matrix.python }}
+          path: |
+            build/offline/
+            build/FB_Sequence_offline_bench.zip
+            build/FB_Sequence_offline_bench.zip.sha256
+          if-no-files-found: error

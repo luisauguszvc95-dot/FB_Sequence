@@ -1,0 +1,53 @@
+{
+  "schema": "sequence-service-compatibility-verification/1",
+  "date": "2026-09-22",
+  "source_base": "98bedb81d2b30710d55b29ae82938f85db6fe446",
+  "service_dependency": "ecf581b0807007d09a9363e0e22f9c523d04f22e",
+  "service_pr": "https://github.com/luisauguszvc95-dot/FB_Service/pull/4",
+  "checks": {
+    "core_static_objects": 28,
+    "core_and_native_fixture_static_objects": 36,
+    "core_checker_tests": 13,
+    "integration_model_file_sqlite_and_api_mock_tests": 77,
+    "total_python_tests": 90,
+    "file_sqlite_demo_checks": 14,
+    "dependency_duts": 10,
+    "source_package_manifest_and_extracted_tests": "PASS"
+  },
+  "status": "PASS_OFFLINE",
+  "native_compilation": "NOT_EXECUTED",
+  "native_program": "PRG_SEQ_ReceiptGateTests",
+  "native_expected_checks": 9,
+  "native_result": "PENDING",
+  "full_envelope_plc_transport": "HELPER_IMPLEMENTED_MOCK_TESTED_NATIVE_PENDING",
+  "core_source_changes": false,
+  "full_envelope_file_transport": "EXECUTED_PASS",
+  "native_composition": "PRG_SEQ_ServiceBench",
+  "native_capture_receipt_helper": "machine_expert_bench.py: PREPARED_NOT_NATIVE_EXECUTED",
+  "ci_matrix": {
+    "configured": [
+      "ubuntu-python3.10",
+      "ubuntu-python3.12",
+      "windows-python3.10",
+      "windows-python3.12"
+    ],
+    "observed": "PENDING_REMOTE_RUN"
+  },
+  "commands": [
+    "python tools/verify_offline.py --service ../FB_Service",
+    "python integration/service_v02/bench_transport.py demo --output build/demo",
+    "python tools/build_bench_package.py"
+  ],
+  "review": {
+    "independent_review": "receipt concurrency/capture atomicity/numeric overflow findings fixed",
+    "sqlite_handles": "explicitly closed for Windows compatibility",
+    "ack_channels": "source mapper only; audit/transport separate"
+  },
+  "ci_corrections": {
+    "failed_head": "950e0ddd9fcaf21dd4d49e8a9fe413d6164b26dc",
+    "run_id": 35702023294,
+    "python310": "SQLite authorizer restored with SQLITE_OK callback; COMMIT failure test retained",
+    "windows": "canonical LF checkout enforced; exact enum/source hashes retained",
+    "followup_matrix": "PENDING_REMOTE_RUN"
+  }
+}
