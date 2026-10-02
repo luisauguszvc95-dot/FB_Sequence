@@ -1,0 +1,46 @@
+{
+  "schema_version": "mica.architecture-manifest/1",
+  "repository": "luisauguszvc95-dot/FB_Sequence",
+  "role": "SEQUENCE",
+  "architecture_reference": "luisauguszvc95-dot/Template_Chapecosi",
+  "declared_owns": [
+    "procedure",
+    "recipe_context",
+    "process_steps",
+    "intent_generation"
+  ],
+  "must_not_own": [
+    "equipment_actuation",
+    "physical_io_mapping_authority",
+    "permissive_authority",
+    "audit_persistence_authority"
+  ],
+  "implementation": {
+    "status": "REFERENCE_IMPLEMENTATION",
+    "summary": "Sequence is subordinate to Control authority and owns process lifecycle/steps without writing physical equipment state.",
+    "native_validation": "PENDING",
+    "field_validation": "NOT_APPLICABLE_DIRECTLY"
+  },
+  "evidence_paths": [
+    "README.md",
+    "docs/ARCHITECTURE.md",
+    "docs/INTEGRATION.md",
+    "docs/VALIDATION.md"
+  ],
+  "public_contracts": [
+    "ST_SEQ_CONTROL_AUTHORITY",
+    "ST_SEQ_CONTROL_REQUEST",
+    "ST_SEQ_CONTROL_RESULT",
+    "ST_SEQ_CONTROL_RUNTIME"
+  ],
+  "contract": {
+    "durable_contract_status": "PENDING_ALIGNMENT",
+    "note": "Sequence contracts are implemented, but adoption of the shared chapecosi industrial contract is an explicit future reconciliation."
+  },
+  "reviewer_policy": {
+    "offline_is_not_native": true,
+    "native_is_not_field": true,
+    "unknown_values_remain_unknown": true,
+    "reviewer_may_modify_repo": false
+  }
+}
